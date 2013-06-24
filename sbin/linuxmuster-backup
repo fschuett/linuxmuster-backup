@@ -203,7 +203,7 @@ stmp=/var/tmp/tmp.services.$mypid
 
 
 # backup ipfire settings
-[ "$ipfire" = "yes" ] && /usr/share/linuxmuster-ipfire/backup-settings.sh
+[ "$ipfire" = "yes" ] && /usr/share/linuxmuster-ipfire/backup.sh
 
 
 # shut down services
