@@ -1,0 +1,14 @@
+Source: linuxmuster-backup
+Section: debian-linuxmuster
+Priority: optional
+Maintainer: Frank Schütte <fschuett@gymnasium-himmelsthuer.de>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.0
+
+Package: linuxmuster-backup
+Architecture: all
+Pre-Depends: locales
+Depends: ${misc:Depends}, linuxmuster-base, bash, mondo, mindi, mindi-busybox
+Description: linuxmuster.net backup scripts
+ This package provides backup scripts for linuxmuster.net
+
