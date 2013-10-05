@@ -2,8 +2,9 @@
 #
 # /usr/sbin/linuxmuster-backup
 # wrapper script for serverbackup with mondo
+# tschmitt@linuxmuster.de
 # fschuett@gymnasium-himmelsthuer.de
-#
+# $Id: linuxmuster-backup 1334 2012-07-20 12:03:39Z tschmitt $
 #
 
 
@@ -43,7 +44,7 @@ usage() {
   echo "                                       e.g. /dev/sdb1 or 10.16.1.10:/home/nfs".
   echo "--mountpoint=directory               : directory where the device is mounted."
   echo "--restoremethod=hd|nfs               : where you plan to restore from."
-  echo "--ipfire=yes|no                      : whether to archive current ipfire settings."
+  echo "--firewall=yes|no                    : whether to archive current firewall(ipcop,ipfire) settings."
   echo "--verify=yes|no                      : whether to verify data after backup."
   echo "--isoprefix=server                   : string which is used as a prefix for"
   echo "                                       the iso files and the folder."
@@ -202,10 +203,6 @@ stmp=/var/tmp/tmp.services.$mypid
 [ -z "$includedirs" ] && includedirs=/
 
 
-# backup ipfire settings
-[ "$ipfire" = "yes" ] && /usr/share/linuxmuster-ipfire/backup.sh
-
-
 # shut down services
 if [ -n "$services" ]; then
 	echo "Shutting down services ..."
@@ -234,7 +231,7 @@ echo "Starting $msg backup process with following options:"
 echo "  backupdevice=$backupdevice"
 echo "  mountpoint=$mountpoint"
 echo "  restoremethod=$restoremethod"
-echo "  ipfire=$ipfire"
+echo "  firewall=$firewall"
 echo "  verify=$verify"
 echo "  services=$services"
 echo "  isoprefix=$isoprefix"
@@ -249,6 +246,34 @@ echo "  rtypeparam=$rtypeparam"
 echo "  target=$target"
 echo
 
+# backup firewall settings
+if [ "$firewall" = "yes" ]; then
+	# test fwtype
+	fwtype="$(get_fwtype)"
+	echo "Will backup firewall type $fwtype..."
+
+	case $fwtype in
+	ipcop)
+		if [ -e /usr/share/linuxmuster-ipcop/backup-settings.sh ]; then
+			/usr/share/linuxmuster-ipcop/backup-settings.sh
+			echo "Firewall backup completed."
+		else
+			echo "Firewall backup script for $fwtype not found. Omitting firewall backup."
+		fi
+		;;
+	ipfire)
+		if [ -e /usr/sbin/linuxmuster-ipfire ]; then
+			/usr/sbin/linuxmuster-ipfire --backup
+			echo "Firewall backup completed."
+		else
+			echo "Firewall backup script for $fwtype not found. Omitting firewall backup."
+		fi
+		;;
+	*)
+		echo "Wrong firewall type $fwtype, must be ipcop|ipfire. Omitting firewall backup."
+		;;
+	esac
+fi
 
 # storing backup time in unix format
 backuptime=`date +%s`

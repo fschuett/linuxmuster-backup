@@ -2,5 +2,6 @@ linuxmuster-backup (0.1.0-0ubuntu0) precise; urgency=low
 
   * initial import
   * created from linuxmuster-base
-
+  * changed linuxmuster-backup to reflect ipcop/ipfire
+  * added mindi.conf with adjusted parameters
  -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Mon, 24 Jun 2013 17:52:50 +0200
