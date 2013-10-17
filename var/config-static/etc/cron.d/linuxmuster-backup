@@ -1,0 +1,9 @@
+# /etc/cron.d/linuxmuster-backup
+# Zeiten, zu denen ein Backup angefertigt wird.
+#
+# Frank Schütte <fschuett@gymnasium-himmelsthuer.de>
+# 17.10.2013
+# Gpl v3
+#
+#0 1 * * 6 /usr/sbin/linuxmuster-backup-diff-full
+#0 2 * * 0-5 /usr/sbin/linuxmuster-backup --inc

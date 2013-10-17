@@ -1,0 +1,15 @@
+#!/bin/bash
+let when=`cal | cut -d ' ' -f6 | egrep "[0-9]{2}" | tail -n1`
+#let when=`cal | cut -d ' ' -f6 | perl -ne 'print if /\d+/' | tail -n1`
+# echo $when
+let now=`date "+%d" | perl -pe 's/^0//'`
+#let now=`date "+%d"`
+# echo $now
+if [ $when -eq $now ]; then
+        echo "doing linuxmuster-backup --full"
+        /usr/sbin/linuxmuster-backup --full
+        else
+        echo "doing linuxmuster-backup --diff."
+        /usr/sbin/linuxmuster-backup --diff
+fi
+
