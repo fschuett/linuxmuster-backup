@@ -1,3 +1,2 @@
-etc/*			etc/
 sbin/*			usr/sbin/
 var/*           var/lib/linuxmuster/
