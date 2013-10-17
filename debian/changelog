@@ -1,3 +1,9 @@
+linuxmuster-backup (0.2.0-0ubuntu1) precise; urgency=low
+
+  * copy mindi.conf to system
+  * add cron.d script for weekday backups
+ -- root <root@gymnasium-himmelsthuer.de>  Thu, 17 Oct 2013 20:01:59 +0200
+
 linuxmuster-backup (0.2.0-0ubuntu0) precise; urgency=low
 
   * added dependency mondo >= 3.0.4

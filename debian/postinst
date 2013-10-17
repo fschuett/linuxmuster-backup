@@ -42,6 +42,15 @@ case "$1" in
    [ -d "$i" ] || mkdir -p $i
   done
 
+  # fix mindi conf
+  MINDI=/etc/mindi/mindi.conf
+  if [ -e $STATICTPLDIR$MINDI ]; then
+   if [ -e $MINDI ]; then
+    mv -f $MINDI $MINDI.dpkg-bak
+   fi
+   cp $STATICTPLDIR$MINDI $MINDI
+  fi
+  
  ;;
 
  abort-upgrade|abort-remove|abort-deconfigure)

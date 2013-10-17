@@ -8,7 +8,7 @@ Standards-Version: 3.6.0
 Package: linuxmuster-backup
 Architecture: all
 Pre-Depends: locales
-Depends: ${misc:Depends}, linuxmuster-base, bash, mondo >= 3.0.4, mindi, mindi-busybox
+Depends: ${misc:Depends}, linuxmuster-base (>= 6.0.44), bash, mondo (>= 3.0.4), mindi, mindi-busybox
 Description: linuxmuster.net backup scripts
  This package provides backup scripts for linuxmuster.net
 

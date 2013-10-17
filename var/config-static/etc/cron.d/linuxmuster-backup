@@ -5,5 +5,5 @@
 # 17.10.2013
 # Gpl v3
 #
-0 1 * * 6   root [ -e /etc/default/linuxmuster-backup ] && . /etc/default/linuxmuster-backup && [ "$START_LINUXMUSTER_BACKUP" == "yes" ] && /usr/sbin/linuxmuster-backup-diff-full
-0 2 * * 0-5 root [ -e /etc/default/linuxmuster-backup ] && . /etc/default/linuxmuster-backup && [ "$START_LINUXMUSTER_BACKUP" == "yes" ] && /usr/sbin/linuxmuster-backup --inc
+0 1 * * 6   root [ -e /etc/linuxmuster/backup.conf ] && . /etc/linuxmuster/backup.conf && [ "$cronbackup" = "yes" ] && /usr/sbin/linuxmuster-backup-diff-full
+0 2 * * 0-5 root [ -e /etc/linuxmuster/backup.conf ] && . /etc/linuxmuster/backup.conf && [ "$cronbackup" = "yes" ] && /usr/sbin/linuxmuster-backup --inc
