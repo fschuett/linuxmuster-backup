@@ -192,11 +192,37 @@ excludedirs="${excludedirs//$mountpoint/}"
 excludedirs="${excludedirs//,/|}"
 includedirs="${includedirs//,/|}"
 services="${services//,/ }"
+upstartservices=
+initdservices=
 
+# split services in init.d, upstart
+if [ -n "$services" ]; then
+	echo "Splitting services..."
+	if [ "$services" = "all" ]; then
+		initctl list|grep "start/running"|grep -v "("| cut -f1|while read job; do upstartservices="$upstartservices $job"; done;
+		if [ -z "$upstartservices" ]; then
+			error "All services requested but no upstart services found! There must be an error!"
+		fi
+	else
+		for s in $services; do
+			if [ -L /etc/init.d/$s ]; then
+				upstartservices="$upstartservices $s"
+			elif [ -e /etc/init.d/$s ]; then
+				initdservices="$initdservices $s"
+			else
+				error "Service $s is neither initd nor upstart service!"
+				echo "Service $s is neither initd nor upstart service! I do ignore it for now."
+			fi
+		done
+	fi
+	
+fi
 
 # temp file for sorted services
-stmp=/var/tmp/tmp.services.$mypid
-[ -e "$stmp" ] && rm $stmp
+sitmp=/var/tmp/tmp.initdservices.$mypid
+[ -e "$sitmp" ] && rm $sitmp
+sutmp=/var/tmp/tmp.upstartservices.$mypid
+[ -e "$sutmp" ] && rm $sutmp
 
 
 # included dirs?
@@ -211,15 +237,25 @@ if [ -n "$services" ]; then
 			$s stop
 		done
 	else
-		for s in $services; do
-			[ -e /etc/rc${rl}.d/S??${s} ] && echo /etc/rc${rl}.d/S??${s} >> $stmp
+		for s in $upstartservices; do
+			initctl show-config -e $s|grep "start on runlevel"|cut -d\[ -f2|cut -d\] -f1|grep -q 2 && echo $s >> $sutmp
 		done
-		if [ -s "$stmp" ]; then
-			for s in `sort -r $stmp`; do
+		if [ -s "$sutmp" ]; then
+			for s in `cat $sutmp`; do
+				initctl stop $s
+			done
+		else
+			echo "No upstart services to shut down!"
+		fi
+		for s in $initdservices; do
+			[ -e /etc/rc${rl}.d/S??${s} ] && echo /etc/rc${rl}.d/S??${s} >> $sitmp
+		done
+		if [ -s "$sitmp" ]; then
+			for s in `sort -r $sitmp`; do
 				$s stop
 			done
 		else
-			echo "No services to shut down!"
+			echo "No initd services to shut down!"
 		fi
 	fi
 fi
@@ -485,41 +521,34 @@ fi
 
 # start services again
 if [ -n "$services" ]; then
-
 	echo "Starting services again ..."
-
 	if [ "$services" = "all" ]; then
-
 		for s in /etc/rc${rl}.d/S*; do
-
 			$s start
-
 		done
-	
 	else
-
-		if [ -s "$stmp" ]; then
-
-			for s in `sort $stmp`; do
-
+		if [ -s "$sitmp" ]; then
+			for s in `sort $sitmp`; do
 				$s start
-
 			done
-
 		else
-
-			echo "No services to start!"
-
+			echo "No initd services to start!"
 		fi
-
-
+		if [ -s "$sutmp" ]; then
+			for s in `cat $sutmp`; do
+				initctl start $s
+			done
+		else
+			echo "No upstart services to start!"
+		fi
 	fi
 
 fi
 
 
 # delete temp files
-[ -e "$stmp" ] && rm $stmp
+[ -e "$sitmp" ] && rm $sitmp
+[ -e "$sutmp" ] && rm $sutmp
 rm $mypidfile
 
 
