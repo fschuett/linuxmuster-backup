@@ -1,3 +1,11 @@
+linuxmuster-backup (0.2.0-0ubuntu2) precise; urgency=low
+
+  [ Frank Schütte ]
+  * save and restore bind mounts, closes #203
+  * change full backup day to saturday
+
+ -- root <root@gymnasium-himmelsthuer.de>  Tue, 05 Nov 2013 14:06:03 +0100
+
 linuxmuster-backup (0.2.0-0ubuntu1) precise; urgency=low
 
   * copy mindi.conf to system
