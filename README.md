@@ -1,4 +1,5 @@
 linuxmuster-backup
 ==================
 
-Backup package for the linuxmuster.net server
+Backup package for the linuxmuster.net server using mondo.
+

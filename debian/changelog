@@ -1,3 +1,10 @@
+linuxmuster-backup (0.3.0-0) babo; urgency=low
+
+  * modifications for lmn 6.1
+  * remove unneeded debian/default
+
+ -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Sun, 16 Nov 2014 14:24:54 +0100
+
 linuxmuster-backup (0.2.0-0ubuntu2) precise; urgency=low
 
   [ Frank Schütte ]
