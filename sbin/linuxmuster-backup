@@ -392,10 +392,23 @@ if ! grep -q ^/sbin/portmap "$netconf"; then
  echo "/sbin/portmap" >> "$netconf"
 fi
 
+# specify kernel manually (from kernel > 3.8)
+kernelver=$(uname -r)
+kernelver1=${kernelver%%.*}
+kernelver2=${kernelver#*.}
+kernelver2=${kernelver2%%.*}
+kernelmanual=
+if [  -n "$kernelver1" -a -n "$kernelver2" ]; then
+ if [ $kernelver1 -ge 3 -a $kernelver2 -gt 8 ]; then
+  kernelmanual="-k /boot/vmlinuz-$(uname -r)"
+ fi
+else
+ RC=1
+fi
 
 # starting mondoarchive
 if [ $RC -eq 0 ]; then
-	nice -n 19 mondoarchive $btypeparam -p $isoprefix $rtypeparam -I "$includedirs" -E "${mountpoint}|${excludedirs}" -N -d $target -s ${mediasize}m -$compression -L
+	nice -n 19 mondoarchive $btypeparam -p $isoprefix $rtypeparam -I "$includedirs" -E "${mountpoint}|${excludedirs}" -N -d $target -s ${mediasize}m -$compression -L $kernelmanual
 	RC=$?
 fi
 
