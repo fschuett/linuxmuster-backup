@@ -1,7 +1,8 @@
-linuxmuster-backup (6.1.0-5) babo; urgency=low
+linuxmuster-backup (6.1.0-5) babo-testing; urgency=low
 
   * modifications for lmn 6.1
   * remove unneeded debian/default
+  * add parameter cronbackup to backup.conf
 
  -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Sun, 16 Nov 2014 14:24:54 +0100
 

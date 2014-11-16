@@ -29,11 +29,6 @@ case "$1" in
   # read linuxmuster defaults
   . /usr/share/linuxmuster/config/dist.conf
 
-  # make configs executable so that perl scripts can source it
-  for i in $BACKUPCONF; do
-   [ -e "$i" ] && chmod 755 "$i"
-  done
-
   # only root may use helperfunctions.sh
   chmod 600 $HELPERFUNCTIONS
 
@@ -50,7 +45,15 @@ case "$1" in
    fi
    cp $STATICTPLDIR$MINDI $MINDI
   fi
-  
+  # fix backup.conf
+  BACKUP=/etc/linuxmuster/backup.conf
+  . $BACKUP
+  if [ "x$cronbackup" = "x" ]; then
+    echo "# should cron scheduled automatic backups be done? yes or no." >>$BACKUP
+    echo "cronbackup=no" >>$BACKUP
+    echo "" >>$BACKUP
+  fi
+
  ;;
 
  abort-upgrade|abort-remove|abort-deconfigure)
