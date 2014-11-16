@@ -1,17 +1,19 @@
 #!/bin/bash
-# am letzten Samstag im Monat Vollbackup, an den anderen Samstaten Differentielles Backup
-# Frank Schütte 2013
-#
-let when=`cal | cut -d ' ' -f7 | egrep "[0-9]{2}" | tail -n1`
-#let when=`cal | cut -d ' ' -f6 | perl -ne 'print if /\d+/' | tail -n1`
-# echo $when
-let now=`date "+%d" | perl -pe 's/^0//'`
-#let now=`date "+%d"`
-# echo $now
+# am ersten Samstag im Monat wird ein full backup gemacht, 
+# an anderen Samstagen ein diff backup
+# Frank Schütte 2014
+# cal hat ein strenges Format, wobei Leerzeichen verwendet werden.
+# cal -h hebt den aktuellen Tag nicht hervor.
+
+when=`cal -h | head -n 3 | tail -n 1 |cut -c 19-20`
+now=`date "+%_d"`
+echo -n "when:$when|now:$now|equal?:"
+[ $when -eq $now ] && echo true || echo false
+
 if [ $when -eq $now ]; then
         echo "doing linuxmuster-backup --full"
         /usr/sbin/linuxmuster-backup --full
-        else
+else
         echo "doing linuxmuster-backup --diff."
         /usr/sbin/linuxmuster-backup --diff
 fi
