@@ -1,0 +1,4 @@
+# default settings for linuxmuster-backup script
+
+# yes or no whether to start regular backups from cron
+START_LINUXMUSTER_BACKUP=no
