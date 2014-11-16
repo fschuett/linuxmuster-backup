@@ -1,4 +1,4 @@
-linuxmuster-backup (0.3.0-0) babo; urgency=low
+linuxmuster-backup (6.1.0-5) babo; urgency=low
 
   * modifications for lmn 6.1
   * remove unneeded debian/default
