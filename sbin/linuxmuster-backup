@@ -27,7 +27,6 @@ excludedirs="/var/tmp"
 compression=3
 keepfull=1
 keepinc=7
-excludebinds=yes
 
 # read config
 [ -f /etc/linuxmuster/backup.conf ] && . /etc/linuxmuster/backup.conf
@@ -188,6 +187,7 @@ rl=`runlevel | awk '{ print $2 }'`
 # remove mountpoint from excludedirs, will be added directly to mondoarchive parameters below (#458).
 excludedirs="${excludedirs//$mountpoint/}"
 
+
 # converting lists (see #462)
 excludedirs="${excludedirs//,/|}"
 includedirs="${includedirs//,/|}"
@@ -223,23 +223,11 @@ sitmp=/var/tmp/tmp.initdservices.$mypid
 [ -e "$sitmp" ] && rm $sitmp
 sutmp=/var/tmp/tmp.upstartservices.$mypid
 [ -e "$sutmp" ] && rm $sutmp
-# temp file for bind mounts
-bindtmp=/var/tmp/tmp.bindmounts.$mypid
-[ -e "$bindtmp" ] && rm $bindtmp
 
 
 # included dirs?
 [ -z "$includedirs" ] && includedirs=/
 
-# save bind mounts to tmp file and unmount
-if [ "$excludebinds" = "yes" ]; then
-	echo "Saving and unmounting all bind mounts..."
-	mount|grep "type none (rw,bind)"|while read bmsrc bmon bmdst bmopts; do echo "$bmsrc $bmdst" >>$bindtmp; done;
-	echo "save bind mounts to $bindtmp and unmount bind mounts!"
-	[ -e "$bindtmp" ] && cat $bindtmp | while read bmsrc bmdst; do
-		umount $bmsrc && echo "...unmounted $bmdst"
-	done;
-fi
 
 # shut down services
 if [ -n "$services" ]; then
@@ -557,18 +545,10 @@ if [ -n "$services" ]; then
 
 fi
 
-# restore bind mounts
-if [ "$excludebinds" = "yes" ]; then
-	echo "Restoring all saved bind mounts..."
-	[ -e "$bindtmp" ] && cat $bindtmp | while read bmsrc bmdst; do
-		mount --bind $bmsrc $bmdst && echo "...mounting bind mount $bmsrc -> $bmdst"
-	done
-fi
 
 # delete temp files
 [ -e "$sitmp" ] && rm $sitmp
 [ -e "$sutmp" ] && rm $sutmp
-[ -e "$bindtmp" ] && rm $bindtmp
 rm $mypidfile
 
 
