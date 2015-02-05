@@ -1,3 +1,9 @@
+linuxmuster-backup (6.1.0-7) babo; urgency=low
+
+  * workaround mondoarchive segfault
+
+ -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Thu, 05 Feb 2015 07:39:20 +0100
+
 linuxmuster-backup (6.1.0-6) babo; urgency=low
 
   * mindi has problems with kernel > 3.8, added manual kernel parameter
