@@ -2,3 +2,8 @@ etc/*				etc/
 sbin/*				usr/sbin/
 var/*				var/lib/linuxmuster/
 var/config-static/etc/cron.d/*	etc/cron.d/
+schulkonsole/menus.d/*		usr/lib/schulkonsole/menus.d/
+schulkonsole/permissions.d/*	usr/lib/schulkonsole/permissions.d/
+schulkonsole/cgi-bin/*		usr/lib/schulkonsole/cgi-bin/
+schulkonsole/bin/*		usr/lib/schulkonsole/bin/
+schulkonsole/shtml/*		usr/share/schulkonsole/shtml/

@@ -1,0 +1,3 @@
+<!--#if expr="$link_settings_backup" -->
+	<a class="end" href="settings_backup.php"><gettext>Backup</gettext></a>
+<!--#endif -->
