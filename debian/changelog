@@ -4,6 +4,7 @@ linuxmuster-backup (6.3.0-1) babo; urgency=low
   * Add translations files for settings_backup.php
   * Require php gettext extension
   * Add wrapper-backup
+  * require schulkonsole 11.5
 
  -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Wed, 29 Apr 2015 17:43:16 +0200
 
