@@ -7,3 +7,5 @@ schulkonsole/permissions.d/*	usr/lib/schulkonsole/permissions.d/
 schulkonsole/cgi-bin/*		usr/lib/schulkonsole/cgi-bin/
 schulkonsole/bin/*		usr/lib/schulkonsole/bin/
 schulkonsole/shtml/*		usr/share/schulkonsole/shtml/
+schulkonsole/locale/de/*.mo	usr/share/locale/de/LC_MESSAGES/
+schulkonsole/locale/en/*.mo	usr/share/locale/en/LC_MESSAGES/
