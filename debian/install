@@ -9,3 +9,4 @@ schulkonsole/bin/*		usr/lib/schulkonsole/bin/
 schulkonsole/shtml/*		usr/share/schulkonsole/shtml/
 schulkonsole/locale/de/*.mo	usr/share/locale/de/LC_MESSAGES/
 schulkonsole/locale/en/*.mo	usr/share/locale/en/LC_MESSAGES/
+schulkonsole/lintian/*		usr/share/lintian/overrides/

@@ -3,6 +3,7 @@ linuxmuster-backup (6.3.0-1) babo; urgency=low
   * Add php file settings_backup.php
   * Add translations files for settings_backup.php
   * Require php gettext extension
+  * Add wrapper-backup
 
  -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Wed, 29 Apr 2015 17:43:16 +0200
 

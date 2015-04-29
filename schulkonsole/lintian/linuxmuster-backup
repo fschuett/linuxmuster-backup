@@ -1,0 +1,1 @@
+linuxmuster-backup-wrapper: setuid-binary usr/lib/schulkonsole/bin/wrapper-backup 4755 root/root
