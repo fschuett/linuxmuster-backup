@@ -142,7 +142,7 @@ class Session {
 // proc_get_status()
 // proc_close()
 class Wrapper {
-        const WRAPPER_FILES = 'wrapper-files';
+        const WRAPPER_BACKUP = 'wrapper-backup';
         
         protected $wrapperFile;
 	protected $appID;
@@ -255,7 +255,7 @@ class File {
     }
     
     public static function write($fileID, array $lines, Session $session) {
-        $wrapper = new Wrapper(Wrapper::WRAPPER_FILES, '11001', $session->id, $session->password);
+        $wrapper = new Wrapper(Wrapper::WRAPPER_BACKUP, '11001', $session->id, $session->password);
         $wrapper->start();
         
         $wrapper->write($fileID . "\n" . implode("\n", $lines));
@@ -412,7 +412,7 @@ if(isset($_POST['accept'])) {
 
 // ----- Wrapper aufrufen, starten, schreiben, lesen -----
 
-/*$wrapper = new Wrapper(Wrapper::WRAPPER_FILES, "appID", "id", "password");
+/*$wrapper = new Wrapper(Wrapper::WRAPPER_BACKUP, "appID", "id", "password");
 $wrapper->start();
 
 $wrapper->write("test");

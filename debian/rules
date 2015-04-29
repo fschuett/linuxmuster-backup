@@ -33,6 +33,9 @@ build-arch-stamp:
 
 	# Add here command to compile/build the package.
 	#$(MAKE)
+	$(CC) -I.   -D_FORTIFY_SOURCE=2 -DWRAPPERBACKUPPERLAPP=\"/usr/lib/schulkonsole/bin/wrapper-backup.pl\" -g -O2 -DWWWUID=33 -DMINUID=500 -MT wrapper-backup.o -MD -MP -MF .deps/wrapper-backup.Tpo -c -o wrapper-backup.o wrapper-backup.c
+	mv -f .deps/wrapper-backup.Tpo .deps/wrapper-backup.Po
+	$(CC) -DWRAPPERBACKUPPERLAPP=\"/usr/lib/schulkonsole/bin/wrapper-backup.pl\" -Wall -g -O2 -DWWWUID=33 -DMINUID=500 -Wl,-Bsymbolic-functions -Wl,-z,relro -o wrapper-backup wrapper-backup.o
 
 	touch build-arch-stamp
 

@@ -2,15 +2,15 @@
 
 =head1 NAME
 
-wrapper-files.pl - wrapper for writing files
+wrapper-backup.pl - wrapper for writing backup.conf
 
 =head1 SYNOPSIS
 
  my $id = $userdata{id};
  my $password = 'secret';
- my $app_id = Schulkonsole::Config::WRITEFILEAPP;
+ my $app_id = 11001;
 
- open SCRIPT, '|-', $Schulkonsole::Config::_wrapper_files;
+ open SCRIPT, '|-', /usr/lib/schulkonsole/bin/wrapper-backup.pl;
  print SCRIPT <<INPUT;
  $id
  $password
@@ -78,9 +78,9 @@ exit (  Schulkonsole::Error::Files::WRAPPER_UNAUTHORIZED_ID
 my $opts;
 SWITCH: {
 
-=head3 write_file
+=head3 write_files
 
-numeric constant: C<Schulkonsole::Config::WRITEFILEAPP>
+numeric constant: C<Schulkonsole::Config::WRITEFILESAPP>
 
 =head4 Parameters from standard input
 
@@ -88,8 +88,7 @@ numeric constant: C<Schulkonsole::Config::WRITEFILEAPP>
 
 =item file
 
-0 = classrooms, 1 = printers, 2 = workstations, 3 = room_defaults,
-4 = backup.conf, 5 = preferences.conf, 6 = group_defaults
+4 = backup.conf
 
 =back
 
@@ -105,44 +104,12 @@ $app_id == Schulkonsole::Config::WRITEFILEAPP and do {
 	my $filename;
 	my $perm;
 	SWITCHWRITEFILE: {
-	$file == 0 and do {
-		$filename = Schulkonsole::Encode::to_fs(
-		            	$Schulkonsole::Config::_classrooms_file);
-		last SWITCHWRITEFILE;
-	};
-	$file == 1 and do {
-		$filename = Schulkonsole::Encode::to_fs(
-		            	$Schulkonsole::Config::_printers_file);
-		last SWITCHWRITEFILE;
-	};
-	$file == 2 and do {
-		$filename = Schulkonsole::Encode::to_fs(
-		            	$Schulkonsole::Config::_workstations_file);
-		last SWITCHWRITEFILE;
-	};
-	$file == 3 and do {
-		$filename = Schulkonsole::Encode::to_fs(
-		            	$Schulkonsole::Config::_room_defaults_file);
-		last SWITCHWRITEFILE;
-	};
 	$file == 4 and do {
 		$filename = Schulkonsole::Encode::to_fs(
 		            	$Schulkonsole::Config::_backup_conf_file);
 		$perm = 0755 unless -e $filename;
 		last SWITCHWRITEFILE;
 	};
-	$file == 5 and do {
-		$filename = Schulkonsole::Encode::to_fs(
-		            	$Schulkonsole::Config::_preferences_conf_file);
-		$perm = 0644 unless -e $filename;
-		last SWITCHWRITEFILE;
-	};
-        $file == 6 and do {
-                $filename = Schulkonsole::Encode::to_fs(
-                                $Schulkonsole::Config::_group_defaults_file);
-                $perm = 0644 unless -e $filename;
-                last SWITCHWRITEFILE;
-        };
 	}
 
 	$< = $>;
@@ -169,105 +136,7 @@ $app_id == Schulkonsole::Config::WRITEFILEAPP and do {
 	exit 0;
 };
 
-=head3 import_workstations
-
-numeric constant: C<Schulkonsole::Config::IMPORTWORKSTATIONSAPP>
-
-=cut
-
-$app_id == Schulkonsole::Config::IMPORTWORKSTATIONSAPP and do {
-	my $sid = <>;
-	($sid) = $sid =~ /^(.+)$/;
-	exit (  Schulkonsole::Error::Files::WRAPPER_INVALID_SESSION_ID
-	      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
-		unless defined $sid;
-
-	my $pid = fork;
-	exit (  Schulkonsole::Error::Files::WRAPPER_CANNOT_FORK
-	      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
-		unless defined $pid;
-
-	if (not $pid) {
-		close STDIN;
-		close STDOUT;
-		close STDERR;
-		open STDOUT, ">>/dev/null" or die;
-		open STDERR, ">>&STDOUT" or die;
-
-
-		umask(027);
-		my $lockfile = Schulkonsole::Config::lockfile('import_workstations');
-		open LOCK, '>>', Schulkonsole::Encode::to_fs($lockfile)
-			or exit(  Schulkonsole::Error::Files::WRAPPER_ERROR_BASE
-			        - Schulkonsole::Error::Files::WRAPPER_CANNOT_OPEN_FILE);
-		flock LOCK, 2;
-		seek LOCK, 0, 0;
-		truncate LOCK, 0;
-		print LOCK "$$\n";
-
-		$< = $>;
-		$) = 0;
-		$( = $);
-		umask(022);
-		open APP, '|-',
-		     Schulkonsole::Encode::to_fs(
-		     	$Schulkonsole::Config::_cmd_import_workstations)
-			or last SWITCH;
-		my $line;
-		while (<APP>) {
-			$line = $_;
-		}
-		close APP;
-		if ($?) {
-			my $error_code = $?;
-			use CGI::Session;
-
-			my $session_lockfile
-				= Schulkonsole::Config::lockfile("cgisession_$sid");
-			open SESSIONLOCK, '>>', $session_lockfile
-				or exit (  Schulkonsole::Error::Files::WRAPPER_CANNOT_OPEN_FILE
-				         - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE);
-			flock SESSIONLOCK, 2;
-
-			my $session = new CGI::Session("driver:File", $sid,
-			              	{
-			                	Directory => Schulkonsole::Encode::to_fs(
-			              			$Schulkonsole::Config::_runtimedir)
-			              	});
-			if ($session->param('username')) {
-				chomp $line;
-				$session->param('statusbg', $line);
-				$session->param('statusbgiserror', $error_code);
-				$session->close;
-			} else {
-				$session->delete();
-			}
-		}
-		exit $?;
-	} else {
-		exit 0;
-	}
-};
-
-=head3 import_printers
-
-numeric constant: C<Schulkonsole::Config::IMPORTPRINTERSAPP>
-
-=cut
-
-$app_id == Schulkonsole::Config::IMPORTPRINTERSAPP and do {
-	$< = $>;
-	$) = 0;
-	$( = $);
-	umask(022);
-	exec Schulkonsole::Encode::to_cli(
-	     	$Schulkonsole::Config::_cmd_import_printers)
-		or last SWITCH;
-};
-
 }
-
-
 
 exit -2;	# program error
 

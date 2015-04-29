@@ -5,7 +5,8 @@ var/config-static/etc/cron.d/*	etc/cron.d/
 schulkonsole/menus.d/*		usr/lib/schulkonsole/menus.d/
 schulkonsole/permissions.d/*	usr/lib/schulkonsole/permissions.d/
 schulkonsole/cgi-bin/*		usr/lib/schulkonsole/cgi-bin/
-schulkonsole/bin/*		usr/lib/schulkonsole/bin/
+schulkonsole/bin/wrapper-backup		usr/lib/schulkonsole/bin/
+schulkonsole/bin/wrapper-backup.pl		usr/lib/schulkonsole/bin/
 schulkonsole/shtml/*		usr/share/schulkonsole/shtml/
 schulkonsole/locale/de/*.mo	usr/share/locale/de/LC_MESSAGES/
 schulkonsole/locale/en/*.mo	usr/share/locale/en/LC_MESSAGES/
