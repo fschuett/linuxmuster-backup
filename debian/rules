@@ -74,7 +74,7 @@ install: build
 
 	# Add here commands to install the package.
 	dh_install
-	#install -D -p -o root -g root -m 0644 debian/lintian debian/tmp/usr/share/lintian/overrides/linuxmuster-schulkonsole
+	#install -D -p -o root -g root -m 0644 debian/lintian debian/tmp/usr/share/lintian/overrides/linuxmuster-backup
 
 # Build architecture-independent files here.
 # Pass -i to all debhelper commands in this target to reduce clutter.
@@ -98,9 +98,9 @@ binary-indep: build install
 	dh_installchangelogs
 	dh_link
 	dh_compress
-	dh_fixperms
+	dh_fixperms -i -X/usr/lib/schulkonsole -X/usr/lib/schulkonsole/bin/wrapper-backup
 	dh_installdeb
-#	dh_perl -i
+	dh_perl -i /usr/lib/schulkonsole
 	dh_gencontrol
 	dh_md5sums
 	dh_builddeb
