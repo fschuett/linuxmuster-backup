@@ -8,7 +8,7 @@ wrapper-backup.pl - wrapper for writing backup.conf
 
  my $id = $userdata{id};
  my $password = 'secret';
- my $app_id = 11001;
+ my $app_id = 91001;
 
  open SCRIPT, '|-', /usr/lib/schulkonsole/bin/wrapper-backup.pl;
  print SCRIPT <<INPUT;
@@ -52,7 +52,7 @@ exit (  Schulkonsole::Error::Files::WRAPPER_APP_ID_DOES_NOT_EXIST
       - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
 	unless defined $app_id;
 
-my $app_name = $Schulkonsole::Config::_id_root_app_names{$app_id};
+my $app_name = 'write_backup_conf';
 exit (  Schulkonsole::Error::Files::WRAPPER_APP_ID_DOES_NOT_EXIST
       - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
 	unless defined $app_name;
@@ -88,29 +88,23 @@ numeric constant: C<Schulkonsole::Config::WRITEFILESAPP>
 
 =item file
 
-4 = backup.conf
+1 = backup.conf
 
 =back
 
 =cut
 
-$app_id == Schulkonsole::Config::WRITEFILEAPP and do {
+$app_id == 91001 and do {
 	my $file = <>;
 	($file) = $file =~ /^(\d+)$/;
 	exit (  Schulkonsole::Error::Files::WRAPPER_INVALID_FILENUMBER
 	      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
-		unless defined $file;
+		unless defined $file and $file == 1;
 
-	my $filename;
 	my $perm;
-	SWITCHWRITEFILE: {
-	$file == 4 and do {
-		$filename = Schulkonsole::Encode::to_fs(
-		            	$Schulkonsole::Config::_backup_conf_file);
-		$perm = 0755 unless -e $filename;
-		last SWITCHWRITEFILE;
-	};
-	}
+	my $filename = Schulkonsole::Encode::to_fs(
+			'/etc/linuxmuster/backup.conf');
+	$perm = 0755 unless -e $filename;
 
 	$< = $>;
 	$) = 0;
