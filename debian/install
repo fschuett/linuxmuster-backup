@@ -8,6 +8,7 @@ schulkonsole/cgi-bin/*		usr/lib/schulkonsole/cgi-bin/
 schulkonsole/bin/wrapper-backup		usr/lib/schulkonsole/bin/
 schulkonsole/bin/wrapper-backup.pl		usr/lib/schulkonsole/bin/
 schulkonsole/shtml/*		usr/share/schulkonsole/shtml/
+schulkonsole/Schulkonsole/*	usr/share/schulkonsole/Schulkonsole/
 schulkonsole/locale/de/*.mo	usr/share/locale/de/LC_MESSAGES/
 schulkonsole/locale/en/*.mo	usr/share/locale/en/LC_MESSAGES/
 schulkonsole/lintian/*		usr/share/lintian/overrides/
