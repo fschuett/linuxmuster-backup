@@ -479,7 +479,6 @@ $is_error = $sk_session->is_error;
 	<a href="settings_users"><?php echo _("Benutzerverwaltung") ?></a>
 	<a href="settings_classs"><?php echo _("Klassen") ?></a>
         <a href="settings_projects"><?php echo _("Projekte") ?></a>
-	<a class="end" href="settings_backup"><?php echo _("Backup") ?></a>
 	<a class="end" href="settings_backup.php"><?php echo _("Backup") ?></a>
 </div>
 
