@@ -106,18 +106,16 @@ class File {
 # --------------------------------------------------------------------------
 $sk_session = new Session();
 
-$this_file = 'settings_backup';
+$this_file = 'settings_backup.php';
 
 if ( ! $sk_session->get_password()) {
-#        my $q = new CGI;
-#        my $url = $q->url( -full => 1 );
-#
-#        # we send cookies over secure connections only
-#        if ($url =~ s/^http:/https:/g) {
-#                $sk_session->redirect($url);
-#        } else {
-#                $sk_session->exit_with_login_page($this_file);
-#        }
+    $url = '/schulkonsole/start';
+    if(isset($_SERVER[HTTP_HOST]) && isset($_SERVER[REQUEST_URI])) {
+        $url = $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI];
+        $url = substr($url, 0, strpos($url, 'settings_backup.php')) . 'start';
+    }
+    header($url);
+    die();
 }
 
 $id = $sk_session->id;
@@ -208,10 +206,6 @@ if(isset($_POST['accept'])) {
         }
     }
 
-# TODO Error handling    if ($@) {
-#            $sk_session->standard_error_handling($this_file, $@);
-#    }
-
 }
 
 # --------------------------------------------------------------------------
@@ -231,4 +225,4 @@ function write_checked($val1,$val2) {
     }
 }
 
-require($CFG->shtmldir . '/' . $this_file . '.php');
+require($CFG->shtmldir . '/' . $this_file);
