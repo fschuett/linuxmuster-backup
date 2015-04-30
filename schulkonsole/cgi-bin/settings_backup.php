@@ -79,7 +79,6 @@ class Session {
                         $this->data = str_replace(array('$D = ', ';;$D', '=>','\''), array('', '', ':','"'), $this->sessionFileContent);
                         
                         $this->data = json_decode($this->data, true);
-                        $this->is_error = false;
                 }
         }
         
@@ -116,8 +115,19 @@ class Session {
         }
         
         public function set_status($status, $is_error) {
-            $this->is_error = $error;
+            $this->is_error = $is_error;
             $this->status = $status;
+        }
+        
+        public function status_class() {
+            if(isset($this->is_error)) {
+                if($this->is_error) {
+                    return ' class="error"';
+                } else {
+                    return ' class="ok"';
+                }
+            }
+            return '';
         }
         
         public function redirect() {
@@ -439,9 +449,6 @@ function write_checked($val1,$val2) {
     }
 }
 
-$status = $sk_session->status;
-$is_error = $sk_session->is_error;
-
 ?>
 
 <html lang="de">
@@ -606,10 +613,10 @@ $is_error = $sk_session->is_error;
 <a class="hideinfo" onclick="toggle_visibility('info');" href="#">^</a>
 
 <?php
-echo '<div id=' . ($is_error?"status.error":"status.ok") . '>';
+echo '<div id="status"' . $sk_session->status_class() . '>';
 echo '<div></div>';
-if(isset($status)) {
-    echo '<p>' . $status . '</p>';
+if(isset($sk_session->status)) {
+    echo '<p>' . $sk_session->status . '</p>';
 }
 if(isset($_SERVER['REMOTE_ADDR'])) {
     echo '<p class="info">';
