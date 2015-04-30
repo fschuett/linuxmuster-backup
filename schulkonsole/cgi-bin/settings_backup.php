@@ -213,7 +213,7 @@ class Wrapper {
 }
 
 class File {
-    const BACKUP_CONF_FILE = 4;
+    const BACKUP_CONF_FILE = 1;
     const BACKUP_CONF_NAME = '/etc/linuxmuster/backup.conf';
     private static $bools = array('firewall','verify','unmount','cronbackup');
     
@@ -255,7 +255,7 @@ class File {
     }
     
     public static function write($fileID, array $lines, Session $session) {
-        $wrapper = new Wrapper(Wrapper::WRAPPER_BACKUP, '11001', $session->id, $session->password);
+        $wrapper = new Wrapper(Wrapper::WRAPPER_BACKUP, '91001', $session->id, $session->password);
         $wrapper->start();
         
         $wrapper->write($fileID . "\n" . implode("\n", $lines));
