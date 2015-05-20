@@ -1,5 +1,4 @@
 <?php
-
 class Wrapper {
         protected $wrapperFile;
 	protected $appID;

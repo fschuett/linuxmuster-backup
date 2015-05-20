@@ -1,7 +1,4 @@
 <?php
-
-require_once('/usr/lib/schulkonsole/cgi-bin/config.php');
-
 class Crypt {
     public static function decrypt($key, $string) {
         # --- DECRYPTION ---

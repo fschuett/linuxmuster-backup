@@ -59,10 +59,10 @@
 <td><?php echo _("Restoremethode, hd: von Fest-/Wechselplatte, nfs: von NFS-Share") ?></td>
 <td>
     <input type="radio" name="restoremethod" id="restoremethodhd" value="hd" 
-        <?php write_checked($backup_conf[restoremethod], "hd") ?> >
+        <?php write_checked($backup_conf['restoremethod'], "hd") ?> >
 <label for="restoremethodhd"><?php echo _("hd") ?></label><br>
 <input type="radio" name="restoremethod" id="restoremethodnfs" value="nfs"
-               <?php write_checked($backup_conf[restoremethod], "nfs") ?> >
+               <?php write_checked($backup_conf['restoremethod'], "nfs") ?> >
 <label for="restoremethodnfs"><?php echo _("nfs") ?></label><br>
 </td>
 </tr>
@@ -70,52 +70,52 @@
 <td><?php echo _("Firewall-Einstellungen sichern?") ?></td>
 <td>
 <input type="radio" name="firewall" id="firewalltrue" value="1"
-       <?php write_checked($backup_conf[firewall],"1") ?> >
+       <?php write_checked($backup_conf['firewall'],"1") ?> >
 <label for="firewalltrue"><?php echo _("Ja") ?></label><br>
 <input type="radio" name="firewall" id="firewallfalse" value="0"
-       <?php write_checked($backup_conf[firewall],"0") ?> >
+       <?php write_checked($backup_conf['firewall'],"0") ?> >
 <label for="firewallfalse"><?php echo _("Nein") ?></label>
 </td>
 <tr class="even">
 <td><?php echo _("Backup verifizieren?") ?></td>
 <td>
 <input type="radio" name="verify" id="verifytrue" value="1"
-       <?php write_checked($backup_conf[verify],"1") ?> >
+       <?php write_checked($backup_conf['verify'],"1") ?> >
 <label for="verifytrue"><?php echo _("Ja") ?></label><br>
 <input type="radio" name="verify" id="verifyfalse" value="0"
-       <?php write_checked($backup_conf[verify],"0") ?> >
+       <?php write_checked($backup_conf['verify'],"0") ?> >
 <label for="verifyfalse"><?php echo _("Nein") ?></label>
 </td>
 </tr>
 <tr class="odd">
 <td><label for="isoprefix"><?php echo _("Pr&auml;fix f&uuml;r ISO-Dateien") ?></label></td>
-<td><input type="text" name="isoprefix" id="isoprefix" value="<?php echo $backup_conf[isoprefix] ?>"></td>
+<td><input type="text" name="isoprefix" id="isoprefix" value="<?php echo $backup_conf['isoprefix'] ?>"></td>
 </tr>
 <tr class="even">
 <td><label for="mediasize"><?php echo _("Gr&ouml;&szlig;e der ISO-Dateien in MB") ?></label></td>
-<td><input size="5" maxlength="4" type="text" name="mediasize" id="mediasize" value="<?php echo $backup_conf[mediasize] ?>"></td>
+<td><input size="5" maxlength="4" type="text" name="mediasize" id="mediasize" value="<?php echo $backup_conf['mediasize'] ?>"></td>
 </tr>
 <tr class="odd">
 <td><label for="includedirs"><?php echo _("Einzuschlie&szlig;ende Verzeichnisse, leeres Feld bedeutet alle") ?></label></td>
-<td><input type="text" size="40" name="includedirs" id="includedirs" value="<?php echo $backup_conf[includedirs] ?>"></td>
+<td><input type="text" size="40" name="includedirs" id="includedirs" value="<?php echo $backup_conf['includedirs'] ?>"></td>
 </tr>
 <tr class="even">
 <td><label for="excludedirs"><?php echo _("Vom Backup auszuschlie&szlig;ende Verzeichnisse") ?></label></td>
-<td><input type="text" size="40" name="excludedirs" id="excludedirs" value="<?php echo $backup_conf[excludedirs] ?>"></td>
+<td><input type="text" size="40" name="excludedirs" id="excludedirs" value="<?php echo $backup_conf['excludedirs'] ?>"></td>
 </tr>
 <tr class="odd">
 <td><label for="services"><?php echo _("W&auml;hrend des Backups herunterzufahrende  Dienste") ?></label></td>
-<td><input type="text" size="40" name="services" id="services" value="<?php echo $backup_conf[services] ?>"></td>
+<td><input type="text" size="40" name="services" id="services" value="<?php echo $backup_conf['services'] ?>"></td>
 </tr>
 <tr class="even">
 <td><label for="compression"><?php echo _("Kompressionsgrad") ?></label></td>
-<td><input size="2" maxlength="1" type="text" name="compression" id="compression" value="<?php echo $backup_conf[compression] ?>"></td>
+<td><input size="2" maxlength="1" type="text" name="compression" id="compression" value="<?php echo $backup_conf['compression'] ?>"></td>
 </tr>
 <tr class="odd">
 <td><?php echo _("Backupger&auml;t nach Backup aush&auml;ngen?") ?></td>
 <td>
 <input type="radio" name="unmount" id="unmounttrue" value="1"
-       <?php write_checked($backup_conf[unmount],"1") ?> >
+       <?php write_checked($backup_conf['unmount'],"1") ?> >
 <label for="unmounttrue"><?php echo _("Ja") ?></label><br>
 <input type="radio" name="unmount" id="unmountfalse" value="0"
        <?php write_checked($backup_conf[unmount],"0") ?> >
