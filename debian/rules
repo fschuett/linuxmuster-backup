@@ -44,11 +44,11 @@ build-arch-stamp:
 	xgettext --from-code=utf-8 -o schulkonsole-settings-backup.pot -L PHP ../cgi-bin/settings_backup.php ../shtml/settings_backup.php; \
 	( cd en && \
 	    msgmerge -U --backup=none schulkonsole-settings-backup.po ../schulkonsole-settings-backup.pot; \
-	    msgfmt schulkonsole-settings-backup.po; \
+	    msgfmt -o schulkonsole-settings-backup.mo schulkonsole-settings-backup.po; \
 	); \
 	( cd de && \
 	    msgmerge -U --backup=none schulkonsole-settings-backup.po ../schulkonsole-settings-backup.pot; \
-	    msgfmt schulkonsole-settings-backup.po; \
+	    msgfmt -o schulkonsole-settings-backup.mo schulkonsole-settings-backup.po; \
 	); \
 	)
 
