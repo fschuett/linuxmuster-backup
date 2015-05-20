@@ -39,6 +39,19 @@ build-arch-stamp:
 	$(CC) -DWRAPPERBACKUPPERLAPP=\"/usr/lib/schulkonsole/bin/wrapper-backup.pl\" -Wall -g -O2 -DWWWUID=33 -DMINUID=500 -Wl,-Bsymbolic-functions -Wl,-z,relro -o wrapper-backup wrapper-backup.o; \
 	chmod -f 4755 wrapper-backup; )
 
+	# make messages
+	( cd schulkonsole/locale && \
+	xgettext --from-code=utf-8 -o schulkonsole-settings-backup.pot -L PHP ../cgi-bin/settings_backup.php ../shtml/settings_backup.php; \
+	( cd en && \
+	    msgmerge -U --backup=none schulkonsole-settings-backup.po ../schulkonsole-settings-backup.pot; \
+	    msgfmt schulkonsole-settings-backup.po; \
+	); \
+	( cd de && \
+	    msgmerge -U --backup=none schulkonsole-settings-backup.po ../schulkonsole-settings-backup.pot; \
+	    msgfmt schulkonsole-settings-backup.po; \
+	); \
+	)
+
 	touch build-arch-stamp
 
 build-indep:  configure-stamp build-indep-stamp
@@ -48,7 +61,6 @@ build-indep-stamp:
 	# Add here command to compile/build the arch indep package.
 	# It's ok not to do anything here, if you don't need to build
 	#  anything for this package.
-
 	touch build-indep-stamp
 
 build: build-arch build-indep

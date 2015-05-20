@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: schulkonsole-settings-backup 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-29 17:34+0200\n"
+"POT-Creation-Date: 2015-05-20 16:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Frank Schütte <fschuett@gymnasium-himmelsthuer.de>\n"
 "Language-Team: german <fschuett@gymnasium-himmelsthuer.de>\n"
@@ -17,228 +17,227 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../cgi-bin/settings_backup.php:345
+#: ../cgi-bin/settings_backup.php:57
 msgid "Restoremethode muss hd oder nfs sein"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:360
+#: ../cgi-bin/settings_backup.php:72
 msgid "Erlaubte Werte f&uuml;r Kompressionsgrad sind 0 bis 9"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:367
+#: ../cgi-bin/settings_backup.php:79
 msgid "Erwarte Zahl zwischen 1 und 9 bei Anzahl der vorgehaltenen Vollbackups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:374
+#: ../cgi-bin/settings_backup.php:86
 msgid ""
 "Erwarte Zahl gr&ouml;&szlig;er gleich 1 bei Anzahl der vorgehaltenen "
 "differentiellen Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:381
+#: ../cgi-bin/settings_backup.php:93
 msgid ""
 "Erwarte Zahl gr&ouml;&szlig;er gleich 1 bei Anzahl der vorgehaltenen "
 "inkrementellen Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:403
+#: ../cgi-bin/settings_backup.php:115
 msgid "&Auml;nderungen &uuml;bernommen"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:451 ../cgi-bin/settings_backup.php:478
+#: ../shtml/settings_backup.php:5 ../shtml/settings_backup.php:32
 msgid "Schulkonsole"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:451 ../cgi-bin/settings_backup.php:466
-#: ../cgi-bin/settings_backup.php:488
+#: ../shtml/settings_backup.php:5 ../shtml/settings_backup.php:20
+#: ../shtml/settings_backup.php:41
 msgid "Einstellungen"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:451 ../cgi-bin/settings_backup.php:482
-#: ../cgi-bin/settings_backup.php:483 ../cgi-bin/settings_backup.php:488
-#: ../cgi-bin/settings_backup.php:492
+#: ../shtml/settings_backup.php:5 ../shtml/settings_backup.php:36
+#: ../shtml/settings_backup.php:41 ../shtml/settings_backup.php:45
 msgid "Backup"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:458
+#: ../shtml/settings_backup.php:12
 msgid "Schulkonsole f&uuml;r Netzwerkberater/innen"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:459
+#: ../shtml/settings_backup.php:13
 msgid "Version"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:465
+#: ../shtml/settings_backup.php:19
 msgid "Mein Konto"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:467
+#: ../shtml/settings_backup.php:21
 msgid "Benutzer"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:468
+#: ../shtml/settings_backup.php:22
 msgid "Quota"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:469
+#: ../shtml/settings_backup.php:23
 msgid "R&auml;ume"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:470
+#: ../shtml/settings_backup.php:24
 msgid "Drucker"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:471
+#: ../shtml/settings_backup.php:25
 msgid "Hosts"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:472
+#: ../shtml/settings_backup.php:26
 msgid "LINBO"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:473
+#: ../shtml/settings_backup.php:27
 msgid "Abmelden"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:477
+#: ../shtml/settings_backup.php:31
 msgid "Start"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:479
+#: ../shtml/settings_backup.php:33
 msgid "Benutzerverwaltung"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:480
+#: ../shtml/settings_backup.php:34
 msgid "Klassen"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:481
+#: ../shtml/settings_backup.php:35
 msgid "Projekte"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:498
+#: ../shtml/settings_backup.php:51
 msgid "Backupger&auml;t (z.B. /dev/sdb1 oder NFS-Share)"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:502
+#: ../shtml/settings_backup.php:55
 msgid ""
 "Mountpunkt (Verzeichnis, in das das Backupger&auml;t ins Serverdateisystem "
 "eingeh&auml;ngt ist)"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:506
+#: ../shtml/settings_backup.php:59
 msgid "Restoremethode, hd: von Fest-/Wechselplatte, nfs: von NFS-Share"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:510
+#: ../shtml/settings_backup.php:63
 msgid "hd"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:513
+#: ../shtml/settings_backup.php:66
 msgid "nfs"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:517
+#: ../shtml/settings_backup.php:70
 msgid "Firewall-Einstellungen sichern?"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:521 ../cgi-bin/settings_backup.php:531
-#: ../cgi-bin/settings_backup.php:566 ../cgi-bin/settings_backup.php:589
+#: ../shtml/settings_backup.php:74 ../shtml/settings_backup.php:84
+#: ../shtml/settings_backup.php:119 ../shtml/settings_backup.php:142
 msgid "Ja"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:524 ../cgi-bin/settings_backup.php:534
-#: ../cgi-bin/settings_backup.php:569 ../cgi-bin/settings_backup.php:592
+#: ../shtml/settings_backup.php:77 ../shtml/settings_backup.php:87
+#: ../shtml/settings_backup.php:122 ../shtml/settings_backup.php:145
 msgid "Nein"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:527
+#: ../shtml/settings_backup.php:80
 msgid "Backup verifizieren?"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:538
+#: ../shtml/settings_backup.php:91
 msgid "Pr&auml;fix f&uuml;r ISO-Dateien"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:542
+#: ../shtml/settings_backup.php:95
 msgid "Gr&ouml;&szlig;e der ISO-Dateien in MB"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:546
+#: ../shtml/settings_backup.php:99
 msgid "Einzuschlie&szlig;ende Verzeichnisse, leeres Feld bedeutet alle"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:550
+#: ../shtml/settings_backup.php:103
 msgid "Vom Backup auszuschlie&szlig;ende Verzeichnisse"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:554
+#: ../shtml/settings_backup.php:107
 msgid "W&auml;hrend des Backups herunterzufahrende  Dienste"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:558
+#: ../shtml/settings_backup.php:111
 msgid "Kompressionsgrad"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:562
+#: ../shtml/settings_backup.php:115
 msgid "Backupger&auml;t nach Backup aush&auml;ngen?"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:573
+#: ../shtml/settings_backup.php:126
 msgid "Anzahl der vorgehaltenen Vollbackups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:577
+#: ../shtml/settings_backup.php:130
 msgid "Anzahl der vorgehaltenen differentiellen Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:581
+#: ../shtml/settings_backup.php:134
 msgid "Anzahl der vorgehaltenen inkrementellen Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:585
+#: ../shtml/settings_backup.php:138
 msgid "Vollautomatische Backups durchf&uuml;hren?"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:617
+#: ../shtml/settings_backup.php:170
 msgid "Sitzungsdauer:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:618
+#: ../shtml/settings_backup.php:171
 msgid "verbleibend:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:619
+#: ../shtml/settings_backup.php:172
 msgid "Benutzer:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:621
+#: ../shtml/settings_backup.php:174
 msgid "Raum:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:627
+#: ../shtml/settings_backup.php:180
 msgid "Workstation:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:629
+#: ../shtml/settings_backup.php:182
 msgid "IP:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:631
+#: ../shtml/settings_backup.php:184
 msgid "aktive Klasse:"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:638
+#: ../shtml/settings_backup.php:191
 msgid "Info"
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:640
+#: ../shtml/settings_backup.php:193
 msgid ""
 "Bearbeiten Sie hier die globalen Einstellungen f&uuml;r\n"
 "das Serverbackup."
 msgstr ""
 
-#: ../cgi-bin/settings_backup.php:642
+#: ../shtml/settings_backup.php:195
 msgid ""
 "F&uuml;r eine detaillierte Beschreibung der einzelnen Punkte\n"
 "konsultieren Sie bitte die Dokumentation."
