@@ -41,14 +41,22 @@ build-arch-stamp:
 
 	# make messages
 	( cd schulkonsole/locale && \
-	xgettext --from-code=utf-8 -o schulkonsole-settings-backup.pot -L PHP ../cgi-bin/settings_backup.php ../shtml/settings_backup.php; \
+	xgettext.pl --plugin tt2 --gnu-gettext --use-gettext-style \
+	--output=linuxmuster-backup.pot ../shtml/settings_backup.tt; \
+	sed 's/CHARSET/UTF-8/' -i linuxmuster-backup.pot; \
+	xgettext --join-existing \
+	--from-code=UTF-8 --language=Perl --output=linuxmuster-backup.pot \
+	--package-name="linuxmuster-backup" --package-version=$(VERSION) \
+	--copyright-holder='This file is put in the public domain' \
+	--msgid-bugs-address=fschuett@gymnasium-himmelsthuer.de \
+	--keyword=get ../cgi-bin/settings_backup; \
 	( cd en && \
-	    msgmerge -U --backup=none schulkonsole-settings-backup.po ../schulkonsole-settings-backup.pot; \
-	    msgfmt -o schulkonsole-settings-backup.mo schulkonsole-settings-backup.po; \
+	    msgmerge -U --backup=none linuxmuster-backup.po ../linuxmuster-backup.pot; \
+	    msgfmt -o linuxmuster-backup.mo linuxmuster-backup.po; \
 	); \
 	( cd de && \
-	    msgmerge -U --backup=none schulkonsole-settings-backup.po ../schulkonsole-settings-backup.pot; \
-	    msgfmt -o schulkonsole-settings-backup.mo schulkonsole-settings-backup.po; \
+	    msgmerge -U --backup=none linuxmuster-backup.po ../linuxmuster-backup.pot; \
+	    msgfmt -o linuxmuster-backup.mo linuxmuster-backup.po; \
 	); \
 	)
 

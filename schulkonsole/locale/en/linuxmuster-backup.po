@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR This file is put in the public domain
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: linuxmuster-backup 1.0\n"
+"Report-Msgid-Bugs-To: fschuett@gymnasium-himmelsthuer.de\n"
+"POT-Creation-Date: 2015-08-19 13:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: English <fschuett@gymhim.de>\n"
+"Language: english\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../shtml/settings_backup.tt:1
+msgid ""
+"<p>Bearbeiten Sie hier die globalen Einstellungen für das Serverbackup.</"
+"p><p>Für eine detaillierte Beschreibung der einzelnen Punkte konsultieren "
+"Sie bitte die Dokumentation.</p>"
+msgstr ""
+
+#: ../shtml/settings_backup.tt:94
+msgid "Anzahl der vorgehaltenen Vollbackups"
+msgstr "number of saved full bakups"
+
+#: ../shtml/settings_backup.tt:98
+msgid "Anzahl der vorgehaltenen differentiellen Backups"
+msgstr "number of saved differential bakups"
+
+#: ../shtml/settings_backup.tt:102
+msgid "Anzahl der vorgehaltenen inkrementellen Backups"
+msgstr "number of saved incremental bakups"
+
+#: ../shtml/settings_backup.tt:1 ../shtml/settings_backup.tt:13
+#: ../shtml/settings_backup.tt:9
+msgid "Backup"
+msgstr "bakup"
+
+#: ../shtml/settings_backup.tt:48
+msgid "Backup verifizieren?"
+msgstr "verify bakup?"
+
+#: ../shtml/settings_backup.tt:19
+msgid "Backupgerät (z.B. /dev/sdb1 oder NFS-Share)"
+msgstr "bakup device (f.e. /dev/sdb1 or nfs share)"
+
+#: ../shtml/settings_backup.tt:83
+msgid "Backupgerät nach Backup aushängen?"
+msgstr "unmount bakup device after bakup completed?"
+
+#: ../shtml/settings_backup.tt:1 ../shtml/settings_backup.tt:9
+msgid "Einstellungen"
+msgstr "settings"
+
+#: ../shtml/settings_backup.tt:67
+msgid "Einzuschließende Verzeichnisse, leeres Feld bedeutet alle"
+msgstr "dirs to include, empty field means all dirs"
+
+#: ../shtml/settings_backup.tt:38
+msgid "Firewall-Einstellungen sichern?"
+msgstr "bakup firewall settings?"
+
+#: ../shtml/settings_backup.tt:63
+msgid "Größe der ISO-Dateien in MB"
+msgstr "size of iso files in MB"
+
+#: ../shtml/settings_backup.tt:110 ../shtml/settings_backup.tt:42
+#: ../shtml/settings_backup.tt:52 ../shtml/settings_backup.tt:87
+msgid "Ja"
+msgstr "yes"
+
+#: ../shtml/settings_backup.tt:79
+msgid "Kompressionsgrad"
+msgstr "compression grade"
+
+#: ../shtml/settings_backup.tt:23
+msgid ""
+"Mountpunkt (Verzeichnis, in das das Backupgerät ins Serverdateisystem "
+"eingehängt ist)"
+msgstr "mountpoint (directory for mounting the bakup device to)"
+
+#: ../shtml/settings_backup.tt:113 ../shtml/settings_backup.tt:45
+#: ../shtml/settings_backup.tt:55 ../shtml/settings_backup.tt:90
+msgid "Nein"
+msgstr "no"
+
+#: ../shtml/settings_backup.tt:59
+msgid "Präfix für ISO-Dateien"
+msgstr "prefix for iso files"
+
+#: ../shtml/settings_backup.tt:27
+msgid "Restoremethode, hd: von Fest-/Wechselplatte, nfs: von NFS-Share"
+msgstr "restore method, hd: from hard disk, nfs: from nfs share"
+
+#: ../shtml/settings_backup.tt:1
+msgid "Schulkonsole"
+msgstr "School Console"
+
+#: ../shtml/settings_backup.tt:106
+msgid "Vollautomatische Backups durchführen?"
+msgstr "do automatic bakups?"
+
+#: ../shtml/settings_backup.tt:71
+msgid "Vom Backup auszuschließende Verzeichnisse"
+msgstr "dirs to exclude from bakup"
+
+#: ../shtml/settings_backup.tt:75
+msgid "Während des Backups herunterzufahrende  Dienste"
+msgstr "services to shutdown during bakup"
+
+#: ../shtml/settings_backup.tt:29 ../shtml/settings_backup.tt:31
+msgid "hd"
+msgstr "hd"
+
+#: ../shtml/settings_backup.tt:32 ../shtml/settings_backup.tt:34
+msgid "nfs"
+msgstr "nfs"
+
+#: ../shtml/settings_backup.tt:119
+msgid "Änderungen übernehmen"
+msgstr "Implement changes"
+
+#: ../cgi-bin/settings_backup:87
+msgid "Restoremethode muss hd oder nfs sein"
+msgstr "restore method has to be one of hd or nfs"
+
+#: ../cgi-bin/settings_backup:103
+msgid "Erlaubte Werte für Kompressionsgrad sind 0 bis 9"
+msgstr "compression grade has to be from 0 to 9"
+
+#: ../cgi-bin/settings_backup:111
+msgid "Erwarte Zahl zwischen 1 und 9 bei Anzahl der vorgehaltenen Vollbackups"
+msgstr "number of saved full bakups has to be from 1 to 9"
+
+#: ../cgi-bin/settings_backup:119
+msgid ""
+"Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen differentiellen "
+"Backups"
+msgstr "number of saved differential bakups has to be equal or greater than 1"
+
+#: ../cgi-bin/settings_backup:127
+msgid ""
+"Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen inkrementellen "
+"Backups"
+msgstr "number of saved incremental bakups has to be equal or greater than 1"
+
+#: ../cgi-bin/settings_backup:157
+msgid "Änderungen übernommen"
+msgstr "Changes have been saved"

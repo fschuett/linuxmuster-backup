@@ -1,0 +1,122 @@
+[% page = {
+      title    => loc("Schulkonsole") _ " - " _ loc("Einstellungen") _ " - " _ loc("Backup"),
+      menu     => 1,
+      submenu  => 'settings',
+      info     => loc('<p>Bearbeiten Sie hier die globalen Einstellungen für das Serverbackup.</p><p>Für eine detaillierte Beschreibung der einzelnen Punkte konsultieren Sie bitte die Dokumentation.</p>'),
+   }
+%]
+
+<h2>[% loc("Einstellungen") %] :: [% loc("Backup") %]</h2>
+
+<form method="post" accept-charset="UTF-8">
+
+<h3>[% loc("Backup") %]</h3>
+
+<table class="settings">
+<colgroup span="2" width="50%">
+</colgroup>
+<tr class="even">
+<td><label for="backupdevice">[% loc("Backupgerät (z.B. /dev/sdb1 oder NFS-Share)") %]</label></td>
+<td><input type="text" name="backupdevice" id="backupdevice" value="[% backup_conf.backupdevice %]" ></td>
+</tr>
+<tr class="odd">
+<td><label for="mountpoint">[% loc("Mountpunkt (Verzeichnis, in das das Backupgerät ins Serverdateisystem eingehängt ist)") %]</label></td>
+<td><input type="text" name="mountpoint" id="mountpoint" value="[% backup_conf.mountpoint %]" ></td>
+</tr>
+<tr class="even">
+<td>[% loc("Restoremethode, hd: von Fest-/Wechselplatte, nfs: von NFS-Share") %]</td>
+<td>
+    <input type="radio" name="restoremethod" id="restoremethodhd" value="[% loc('hd') %]" 
+    [% IF backup_conf.restoremethod == "hd" %] checked[% END %]>
+<label for="restoremethodhd">[% loc("hd") %]</label><br>
+<input type="radio" name="restoremethod" id="restoremethodnfs" value="[% loc('nfs') %]"
+    [% IF backup_conf.restoremethod == "nfs" %] checked[% END %]>
+<label for="restoremethodnfs">[% loc("nfs") %]</label><br>
+</td>
+</tr>
+<tr class="odd">
+<td>[% loc("Firewall-Einstellungen sichern?") %]</td>
+<td>
+<input type="radio" name="firewall" id="firewalltrue" value="1"
+[% IF backup_conf.firewall == "1" %] checked[% END %]>
+<label for="firewalltrue">[% loc("Ja") %]</label><br>
+<input type="radio" name="firewall" id="firewallfalse" value="0"
+[% IF backup_conf.firewall == "0" %] checked[% END %]>
+<label for="firewallfalse">[% loc("Nein") %]</label>
+</td>
+<tr class="even">
+<td>[% loc("Backup verifizieren?") %]</td>
+<td>
+<input type="radio" name="verify" id="verifytrue" value="1"
+       [% IF backup_conf.verify == "1" %] checked[% END %]>
+<label for="verifytrue">[% loc("Ja") %]</label><br>
+<input type="radio" name="verify" id="verifyfalse" value="0"
+       [% IF backup_conf.verify == "0" %] checked[% END %]>
+<label for="verifyfalse">[% loc("Nein") %]</label>
+</td>
+</tr>
+<tr class="odd">
+<td><label for="isoprefix">[% loc("Präfix für ISO-Dateien") %]</label></td>
+<td><input type="text" name="isoprefix" id="isoprefix" value="[% backup_conf.isoprefix %]"></td>
+</tr>
+<tr class="even">
+<td><label for="mediasize">[% loc("Größe der ISO-Dateien in MB") %]</label></td>
+<td><input size="5" maxlength="4" type="text" name="mediasize" id="mediasize" value="[% backup_conf.mediasize %]"></td>
+</tr>
+<tr class="odd">
+<td><label for="includedirs">[% loc("Einzuschließende Verzeichnisse, leeres Feld bedeutet alle") %]</label></td>
+<td><input type="text" size="40" name="includedirs" id="includedirs" value="[% backup_conf.includedirs %]"></td>
+</tr>
+<tr class="even">
+<td><label for="excludedirs">[% loc("Vom Backup auszuschließende Verzeichnisse") %]</label></td>
+<td><input type="text" size="40" name="excludedirs" id="excludedirs" value="[% backup_conf.excludedirs %]"></td>
+</tr>
+<tr class="odd">
+<td><label for="services">[% loc("Während des Backups herunterzufahrende  Dienste") %]</label></td>
+<td><input type="text" size="40" name="services" id="services" value="[% backup_conf.services %]"></td>
+</tr>
+<tr class="even">
+<td><label for="compression">[% loc("Kompressionsgrad") %]</label></td>
+<td><input size="2" maxlength="1" type="text" name="compression" id="compression" value="[% backup_conf.compression %]"></td>
+</tr>
+<tr class="odd">
+<td>[% loc("Backupgerät nach Backup aushängen?") %]</td>
+<td>
+<input type="radio" name="unmount" id="unmounttrue" value="1"
+       [% IF backup_conf.unmount == "1" %] checked[% END %]>
+<label for="unmounttrue">[% loc("Ja") %]</label><br>
+<input type="radio" name="unmount" id="unmountfalse" value="0"
+       [% IF backup_conf.unmount == "0" %] checked[% END %]>
+<label for="unmountfalse">[% loc("Nein") %]</label>
+</td>
+</tr>
+<tr class="even">
+<td><label for="keepfull">[% loc("Anzahl der vorgehaltenen Vollbackups") %]</label></td>
+<td><input type="text" size="2" maxlength="1" name="keepfull" id="keepfull" value="[% backup_conf.keepfull %]"></td>
+</tr>
+<tr class="odd">
+<td><label for="keepdiff">[% loc("Anzahl der vorgehaltenen differentiellen Backups") %]</label></td>
+<td><input type="text" size="3" maxlength="2" name="keepdiff" id="keepdiff" value="[% backup_conf.keepdiff %]"></td>
+</tr>
+<tr class="even">
+<td><label for="keepinc">[% loc("Anzahl der vorgehaltenen inkrementellen Backups") %]</label></td>
+<td><input type="text" size="3" maxlength="2" name="keepinc" id="keepinc" value="[% backup_conf.keepinc %]"></td>
+</tr>
+<tr class="odd">
+<td><label for="cronbackup">[% loc("Vollautomatische Backups durchführen?") %]</label></td>
+<td>
+<input type="radio" name="cronbackup" id="cronbackuptrue" value="1"
+[% IF backup_conf.cronbackup == "1" %] checked[% END %] >
+<label for="cronbackuptrue">[% loc("Ja") %]</label><br>
+<input type="radio" name="cronbackup" id="cronbackupfalse" value="0"
+[% IF backup_conf.cronbackup == "0" %] checked[% END %] >
+<label for="cronbackupfalse">[% loc("Nein") %]</label>
+</td>
+</tr>
+</table>
+
+<p>
+<input type="submit" name="accept" value="[% loc('Änderungen übernehmen') %]">
+</p>
+
+</form>
