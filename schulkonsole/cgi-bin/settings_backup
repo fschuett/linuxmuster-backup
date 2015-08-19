@@ -23,11 +23,13 @@ provides the following variables:
 =cut
 
 use strict;
-use lib 'usr/share/schulkonsole/Schulkonsole';
+use lib '/usr/share/schulkonsole';
 use open ':utf8';
 use Env::Bash;
 use Schulkonsole::Encode;
 use Schulkonsole::Session;
+use IPC::Open3;
+use POSIX 'sys_wait_h';
 
 
 my $this_file = 'settings_backup';
@@ -56,15 +58,15 @@ my $q = $sk_session->query();
 my $id = $sk_session->userdata('id');
 my $password = $sk_session->get_password();
 
-my %backup_conf = read_backup_conf();
-my %backup_conf_new;
-
 my %backup_conf_bool_in_form = (
 	firewall => 1,
 	verify => 1,
 	unmount => 1,
 	cronbackup => 1,
 );
+
+my %backup_conf = read_backup_conf();
+my %backup_conf_new;
 
 if($q->param('accept')) {
     eval {
@@ -73,7 +75,7 @@ if($q->param('accept')) {
     foreach my $param ($q->param) {
         if(defined $backup_conf{$param}) {
             if($backup_conf_bool_in_form{$param}) {
-                if (not $backup_conf{param}) {
+                if (not $backup_conf{$param}) {
                     $backup_conf_new{$param} = 1;
                     $is_changed = 1;
                 }
@@ -89,7 +91,7 @@ if($q->param('accept')) {
                             last CHECKVALUE;
                         };
                         $param =~ /^(includedirs|excludedirs)/ and do {
-                            @dirs = split(',', $value);
+                            my @dirs = split(',', $value);
                             foreach my $dir (@dirs) {
                                 ($dir) = $dir =~ /^\s*(.*?)\s*/;
                             }
@@ -129,7 +131,7 @@ if($q->param('accept')) {
                             last CHECKVALUE;
                         };
                         }
-                        $backup_conf{$param} = $q->param($param);
+                        $backup_conf_new{$param} = $q->param($param);
                         $is_changed = 1;
                 }
             }
@@ -149,7 +151,7 @@ if($q->param('accept')) {
         $sk_session->set_status(join(', ', @errors), 1);
     } else {
         my $is_changed = 0;
-        $lines = new_backup_lines(\%backup_conf_new);
+        my $lines = new_backup_lines(\%backup_conf_new);
         write_backup_conf($id,$password,$lines);
         
         if ($is_changed) {
@@ -164,21 +166,24 @@ if($q->param('accept')) {
 }
 
 # pre-set values for <form>
+my %backup_hash;
 foreach my $key (keys %backup_conf) {
 	if (defined $backup_conf_new{$key}) {
 		if ($backup_conf_bool_in_form{$key}) {
-			$sk_session->set_var($key, $backup_conf_new{$key});
+			$backup_hash{$key}=to_bool($backup_conf_new{$key});
 		} else {
-			$q->param($key, $backup_conf_new{$key});
+			$backup_hash{$key}=$backup_conf_new{$key};
 		}
 	} else {
 		if ($backup_conf_bool_in_form{$key}) {
-			$sk_session->set_var($key, $backup_conf{$key});
+			$backup_hash{$key}=to_bool($backup_conf{$key});
 		} else {
-			$q->param($key, $backup_conf{$key});
+			$backup_hash{$key}=$backup_conf{$key};
 		}
 	}
 }
+
+$sk_session->set_var("backup_conf",\%backup_hash);
 
 $sk_session->print_page("$this_file.tt", $this_file);
 
@@ -197,7 +202,7 @@ Write the changes
 
 sub is_bool {
     my $param = shift;
-    if(defined %backup_conf_bool_in_form{$param}) {
+    if($backup_conf_bool_in_form{$param}) {
         return 1;
     } else {
         return 0;
@@ -254,39 +259,39 @@ sub new_backup_lines {
 
         while (my $line = <BACKUPCONF>) {
             foreach my $key (keys %new) {
-                if ($line =~ /^\s*\$key\s*=/) {
+                if ($line =~ /^\s*\Q$key\E\s*=/) {
                     my $value = $new{$key};
                     if (is_bool{$key}) {
-                        $line = "$key = '" . ($value ? $true : $false) . "';\n";
+                        $line = "$key='" . ($value ? $true : $false) . "'\n";
                     } else {
                         if ($value =~ /^\d+$/) {
-                                $line = "$key = $value;\n";
+                                $line = "$key=$value\n";
                         } else {
-                                $line = "$key = '$value';\n";
+                                $line = "$key='$value'\n";
                         }
                     }
-                    delete $new{$new_key};
+                    delete $new{$key};
                     last;
                 }
             }
             push @lines, $line;
         }
         if (%new) {
-                push @lines, "# schulkonsole\n";
+                push @lines, "\n# schulkonsole\n";
                 my $line;
                 foreach my $key (keys %new) {
                         my $value = $new{$key};
                         if ($value =~ /^\d+$/) {
-                                $line = "$key = $value;\n";
+                                $line = "$key=$value\n";
                         } else {
-                                $line = "$key = '$value';\n";
+                                $line = "$key='$value'\n";
                         }
                         push @lines, $line;
                 }
         }
         return \@lines;
     } else {
-            die new "$0 Cannot open file /etc/linuxmuster/backup.conf";
+            die "$0 Cannot open file /etc/linuxmuster/backup.conf";
     }
 }
 
@@ -321,7 +326,7 @@ sub start_wrapper {
 	my $out = shift;
 	my $in = shift;
 	my $err = shift;
-	my $pid = IPC::Open3::open3 $out, $in, $err, "wrapper-backup"
+	my $pid = IPC::Open3::open3 $out, $in, $err, "/usr/lib/schulkonsole/bin/wrapper-backup"
 		or die "$0: $!";
 
 	binmode $out, ':utf8';
@@ -334,9 +339,9 @@ sub start_wrapper {
 	    or $re == -1) {
 		my $error = ($? >> 8) - 256;
 		if ($error < -127) {
-			die new "$0: $!";
+			die "$0: $!";
 		} else {
-			die new "$0: $error wrapper-backup";
+			die "$0: $error /usr/lib/schulkonsole/bin/wrapper-backup";
 		}
 	}
 	print $out "$id\n$password\n$app_id\n";

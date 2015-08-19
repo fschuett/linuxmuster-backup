@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: schulkonsole-settings-backup 1.0\n"
 "Report-Msgid-Bugs-To: fschuett@gymnasium-himmelsthuer.de\n"
-"POT-Creation-Date: 2015-08-19 13:42+0200\n"
+"POT-Creation-Date: 2015-08-19 14:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Frank Schütte <fschuett@gymnasium-himmelsthuer.de>\n"
 "Language-Team: german <fschuett@gymnasium-himmelsthuer.de>\n"
@@ -24,15 +24,15 @@ msgid ""
 "Sie bitte die Dokumentation.</p>"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:94
+#: ../shtml/settings_backup.tt:79
 msgid "Anzahl der vorgehaltenen Vollbackups"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:98
+#: ../shtml/settings_backup.tt:83
 msgid "Anzahl der vorgehaltenen differentiellen Backups"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:102
+#: ../shtml/settings_backup.tt:87
 msgid "Anzahl der vorgehaltenen inkrementellen Backups"
 msgstr ""
 
@@ -41,7 +41,7 @@ msgstr ""
 msgid "Backup"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:48
+#: ../shtml/settings_backup.tt:43
 msgid "Backup verifizieren?"
 msgstr ""
 
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Backupgerät (z.B. /dev/sdb1 oder NFS-Share)"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:83
+#: ../shtml/settings_backup.tt:73
 msgid "Backupgerät nach Backup aushängen?"
 msgstr ""
 
@@ -57,7 +57,7 @@ msgstr ""
 msgid "Einstellungen"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:67
+#: ../shtml/settings_backup.tt:57
 msgid "Einzuschließende Verzeichnisse, leeres Feld bedeutet alle"
 msgstr ""
 
@@ -65,16 +65,11 @@ msgstr ""
 msgid "Firewall-Einstellungen sichern?"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:63
+#: ../shtml/settings_backup.tt:53
 msgid "Größe der ISO-Dateien in MB"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:110 ../shtml/settings_backup.tt:42
-#: ../shtml/settings_backup.tt:52 ../shtml/settings_backup.tt:87
-msgid "Ja"
-msgstr ""
-
-#: ../shtml/settings_backup.tt:79
+#: ../shtml/settings_backup.tt:69
 msgid "Kompressionsgrad"
 msgstr ""
 
@@ -84,12 +79,7 @@ msgid ""
 "eingehängt ist)"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:113 ../shtml/settings_backup.tt:45
-#: ../shtml/settings_backup.tt:55 ../shtml/settings_backup.tt:90
-msgid "Nein"
-msgstr ""
-
-#: ../shtml/settings_backup.tt:59
+#: ../shtml/settings_backup.tt:49
 msgid "Präfix für ISO-Dateien"
 msgstr ""
 
@@ -101,15 +91,15 @@ msgstr ""
 msgid "Schulkonsole"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:106
+#: ../shtml/settings_backup.tt:91
 msgid "Vollautomatische Backups durchführen?"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:71
+#: ../shtml/settings_backup.tt:61
 msgid "Vom Backup auszuschließende Verzeichnisse"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:75
+#: ../shtml/settings_backup.tt:65
 msgid "Während des Backups herunterzufahrende  Dienste"
 msgstr ""
 
@@ -121,34 +111,34 @@ msgstr ""
 msgid "nfs"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:119
+#: ../shtml/settings_backup.tt:99
 msgid "Änderungen übernehmen"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:87
+#: ../cgi-bin/settings_backup:89
 msgid "Restoremethode muss hd oder nfs sein"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:103
+#: ../cgi-bin/settings_backup:105
 msgid "Erlaubte Werte für Kompressionsgrad sind 0 bis 9"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:111
+#: ../cgi-bin/settings_backup:113
 msgid "Erwarte Zahl zwischen 1 und 9 bei Anzahl der vorgehaltenen Vollbackups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:119
+#: ../cgi-bin/settings_backup:121
 msgid ""
 "Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen differentiellen "
 "Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:127
+#: ../cgi-bin/settings_backup:129
 msgid ""
 "Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen inkrementellen "
 "Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:157
+#: ../cgi-bin/settings_backup:159
 msgid "Änderungen übernommen"
 msgstr ""

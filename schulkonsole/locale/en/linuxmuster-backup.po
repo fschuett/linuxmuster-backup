@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: linuxmuster-backup 1.0\n"
 "Report-Msgid-Bugs-To: fschuett@gymnasium-himmelsthuer.de\n"
-"POT-Creation-Date: 2015-08-19 13:42+0200\n"
+"POT-Creation-Date: 2015-08-19 14:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English <fschuett@gymhim.de>\n"
@@ -24,15 +24,15 @@ msgid ""
 "Sie bitte die Dokumentation.</p>"
 msgstr ""
 
-#: ../shtml/settings_backup.tt:94
+#: ../shtml/settings_backup.tt:79
 msgid "Anzahl der vorgehaltenen Vollbackups"
 msgstr "number of saved full bakups"
 
-#: ../shtml/settings_backup.tt:98
+#: ../shtml/settings_backup.tt:83
 msgid "Anzahl der vorgehaltenen differentiellen Backups"
 msgstr "number of saved differential bakups"
 
-#: ../shtml/settings_backup.tt:102
+#: ../shtml/settings_backup.tt:87
 msgid "Anzahl der vorgehaltenen inkrementellen Backups"
 msgstr "number of saved incremental bakups"
 
@@ -41,7 +41,7 @@ msgstr "number of saved incremental bakups"
 msgid "Backup"
 msgstr "bakup"
 
-#: ../shtml/settings_backup.tt:48
+#: ../shtml/settings_backup.tt:43
 msgid "Backup verifizieren?"
 msgstr "verify bakup?"
 
@@ -49,7 +49,7 @@ msgstr "verify bakup?"
 msgid "Backupgerät (z.B. /dev/sdb1 oder NFS-Share)"
 msgstr "bakup device (f.e. /dev/sdb1 or nfs share)"
 
-#: ../shtml/settings_backup.tt:83
+#: ../shtml/settings_backup.tt:73
 msgid "Backupgerät nach Backup aushängen?"
 msgstr "unmount bakup device after bakup completed?"
 
@@ -57,7 +57,7 @@ msgstr "unmount bakup device after bakup completed?"
 msgid "Einstellungen"
 msgstr "settings"
 
-#: ../shtml/settings_backup.tt:67
+#: ../shtml/settings_backup.tt:57
 msgid "Einzuschließende Verzeichnisse, leeres Feld bedeutet alle"
 msgstr "dirs to include, empty field means all dirs"
 
@@ -65,16 +65,11 @@ msgstr "dirs to include, empty field means all dirs"
 msgid "Firewall-Einstellungen sichern?"
 msgstr "bakup firewall settings?"
 
-#: ../shtml/settings_backup.tt:63
+#: ../shtml/settings_backup.tt:53
 msgid "Größe der ISO-Dateien in MB"
 msgstr "size of iso files in MB"
 
-#: ../shtml/settings_backup.tt:110 ../shtml/settings_backup.tt:42
-#: ../shtml/settings_backup.tt:52 ../shtml/settings_backup.tt:87
-msgid "Ja"
-msgstr "yes"
-
-#: ../shtml/settings_backup.tt:79
+#: ../shtml/settings_backup.tt:69
 msgid "Kompressionsgrad"
 msgstr "compression grade"
 
@@ -84,12 +79,7 @@ msgid ""
 "eingehängt ist)"
 msgstr "mountpoint (directory for mounting the bakup device to)"
 
-#: ../shtml/settings_backup.tt:113 ../shtml/settings_backup.tt:45
-#: ../shtml/settings_backup.tt:55 ../shtml/settings_backup.tt:90
-msgid "Nein"
-msgstr "no"
-
-#: ../shtml/settings_backup.tt:59
+#: ../shtml/settings_backup.tt:49
 msgid "Präfix für ISO-Dateien"
 msgstr "prefix for iso files"
 
@@ -101,15 +91,15 @@ msgstr "restore method, hd: from hard disk, nfs: from nfs share"
 msgid "Schulkonsole"
 msgstr "School Console"
 
-#: ../shtml/settings_backup.tt:106
+#: ../shtml/settings_backup.tt:91
 msgid "Vollautomatische Backups durchführen?"
 msgstr "do automatic bakups?"
 
-#: ../shtml/settings_backup.tt:71
+#: ../shtml/settings_backup.tt:61
 msgid "Vom Backup auszuschließende Verzeichnisse"
 msgstr "dirs to exclude from bakup"
 
-#: ../shtml/settings_backup.tt:75
+#: ../shtml/settings_backup.tt:65
 msgid "Während des Backups herunterzufahrende  Dienste"
 msgstr "services to shutdown during bakup"
 
@@ -121,34 +111,40 @@ msgstr "hd"
 msgid "nfs"
 msgstr "nfs"
 
-#: ../shtml/settings_backup.tt:119
+#: ../shtml/settings_backup.tt:99
 msgid "Änderungen übernehmen"
 msgstr "Implement changes"
 
-#: ../cgi-bin/settings_backup:87
+#: ../cgi-bin/settings_backup:89
 msgid "Restoremethode muss hd oder nfs sein"
 msgstr "restore method has to be one of hd or nfs"
 
-#: ../cgi-bin/settings_backup:103
+#: ../cgi-bin/settings_backup:105
 msgid "Erlaubte Werte für Kompressionsgrad sind 0 bis 9"
 msgstr "compression grade has to be from 0 to 9"
 
-#: ../cgi-bin/settings_backup:111
+#: ../cgi-bin/settings_backup:113
 msgid "Erwarte Zahl zwischen 1 und 9 bei Anzahl der vorgehaltenen Vollbackups"
 msgstr "number of saved full bakups has to be from 1 to 9"
 
-#: ../cgi-bin/settings_backup:119
+#: ../cgi-bin/settings_backup:121
 msgid ""
 "Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen differentiellen "
 "Backups"
 msgstr "number of saved differential bakups has to be equal or greater than 1"
 
-#: ../cgi-bin/settings_backup:127
+#: ../cgi-bin/settings_backup:129
 msgid ""
 "Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen inkrementellen "
 "Backups"
 msgstr "number of saved incremental bakups has to be equal or greater than 1"
 
-#: ../cgi-bin/settings_backup:157
+#: ../cgi-bin/settings_backup:159
 msgid "Änderungen übernommen"
 msgstr "Changes have been saved"
+
+#~ msgid "Ja"
+#~ msgstr "yes"
+
+#~ msgid "Nein"
+#~ msgstr "no"

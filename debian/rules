@@ -95,6 +95,7 @@ install: build
 	# Add here commands to install the package.
 	dh_install
 	#install -D -p -o root -g root -m 0644 debian/lintian debian/tmp/usr/share/lintian/overrides/linuxmuster-backup
+	chmod 755 debian/linuxmuster-backup/usr/lib/schulkonsole/cgi-bin/settings_backup
 
 # Build architecture-independent files here.
 # Pass -i to all debhelper commands in this target to reduce clutter.
