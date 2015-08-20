@@ -1,3 +1,9 @@
+linuxmuster-backup (6.3.0-3) precise; urgency=low
+
+  * rework as perl plugin with additional msg catalog.
+
+ -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Thu, 20 Aug 2015 13:01:33 +0200
+
 linuxmuster-backup (6.3.0-2) babo-testing; urgency=low
 
   * Add php file settings_backup.php
