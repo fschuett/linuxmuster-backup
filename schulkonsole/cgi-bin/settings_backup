@@ -53,7 +53,7 @@ if (not $sk_session->get_password()) {
 }
 
 my $q = $sk_session->query();
-
+my $d = $sk_session->d('linuxmuster-backup');
 
 my $id = $sk_session->userdata('id');
 my $password = $sk_session->get_password();
@@ -86,7 +86,7 @@ if($q->param('accept')) {
                         $param =~ /^restoremethod/ and do {
                             if($value ne 'hd' and $value ne 'nfs') {
                                 $sk_session->mark_input_error('restoremethod');
-                                push @errors, $sk_session->dplugin()->get('Restoremethode muss hd oder nfs sein');
+                                push @errors, $sk_session->d($textdomain)->get('Restoremethode muss hd oder nfs sein');
                             }
                             last CHECKVALUE;
                         };
@@ -101,7 +101,7 @@ if($q->param('accept')) {
                         $param =~ /^compression/ and do {
                             if ($value !~ /^\s*[0-9]\s*$/) {
                                 $sk_session->mark_input_error('compression');
-                                push @errors, $sk_session->dplugin()->get(
+                                push @errors, $sk_session->d($textdomain)->get(
                                             'Erlaubte Werte für Kompressionsgrad sind 0 bis 9');
                             }
                             last CHECKVALUE;
@@ -109,7 +109,8 @@ if($q->param('accept')) {
                         $param =~ /^keepfull/ and do {
                             if ($value !~ /^\s*[1-9]\s*$/) {
                                 $sk_session->mark_input_error('keepfull');
-                                push @errors, $sk_session->dplugin()->get(
+
+                                push @errors, $sk_session->d($textdomain)->get(
                                             'Erwarte Zahl zwischen 1 und 9 bei Anzahl der vorgehaltenen Vollbackups');
                             }
                             last CHECKVALUE;
@@ -117,7 +118,7 @@ if($q->param('accept')) {
                         $param =~ /^keepdiff/ and do {
                             if ($value !~ /^\s*[1-9]\s*$/) {
                                 $sk_session->mark_input_error('keepdiff');
-                                push @errors, $sk_session->dplugin()->get(
+                                push @errors, $sk_session->d($textdomain)->get(
                                             'Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen differentiellen Backups');
                             }
                             last CHECKVALUE;
@@ -125,7 +126,7 @@ if($q->param('accept')) {
                         $param =~ /^keepinc/ and do {
                             if ($value !~ /^\s*[1-9]\s*$/) {
                                 $sk_session->mark_input_error('keepfull');
-                                push @errors, $sk_session->dplugin()->get(
+                                push @errors, $sk_session->d($textdomain)->get(
                                             'Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen inkrementellen Backups');
                             }
                             last CHECKVALUE;
@@ -156,7 +157,7 @@ if($q->param('accept')) {
         
         if ($is_changed) {
                 $sk_session->set_status(
-                        $sk_session->dplugin()->get('Änderungen übernommen'), 0);
+                        $sk_session->d($textdomain)->get('Änderungen übernommen'), 0);
         }
     }
     };

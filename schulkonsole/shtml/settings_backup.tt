@@ -1,8 +1,9 @@
 [% page = {
-      title    => loc("Schulkonsole") _ " - " _ loc("Einstellungen") _ " - " _ loc("Backup"),
-      menu     => 1,
-      submenu  => 'settings',
-      info     => loc('<p>Bearbeiten Sie hier die globalen Einstellungen für das Serverbackup.</p><p>Für eine detaillierte Beschreibung der einzelnen Punkte konsultieren Sie bitte die Dokumentation.</p>'),
+      textdomain    => 'linuxmuster-backup',
+      title         => loc("Schulkonsole") _ " - " _ loc("Einstellungen") _ " - " _ loc("Backup"),
+      menu          => 1,
+      submenu       => 'settings',
+      info          => loc('<p>Bearbeiten Sie hier die globalen Einstellungen für das Serverbackup.</p><p>Für eine detaillierte Beschreibung der einzelnen Punkte konsultieren Sie bitte die Dokumentation.</p>'),
    }
 %]
 
