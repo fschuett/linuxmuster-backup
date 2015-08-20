@@ -186,7 +186,7 @@ foreach my $key (keys %backup_conf) {
 
 $sk_session->set_var("backup_conf",\%backup_hash);
 
-$sk_session->print_page("$this_file.tt", $this_file);
+$sk_session->print_page("$this_file.tt", $this_file,$textdomain);
 
 =back
 
