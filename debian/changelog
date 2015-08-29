@@ -1,3 +1,9 @@
+linuxmuster-backup (6.3.0-4) babo-testing; urgency=low
+
+  * New menu (requires schulkonsole 0.15.0-1.
+
+ -- Frank Schütte <fschuett@gymnasium-himmelsthuer.de>  Sat, 29 Aug 2015 16:06:52 +0200
+
 linuxmuster-backup (6.3.0-3) babo-testing; urgency=low
 
   * rework as perl plugin with additional msg catalog.
