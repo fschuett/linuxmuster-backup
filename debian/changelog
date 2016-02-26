@@ -1,3 +1,9 @@
+linuxmuster-backup (6.3.0-5) babo-testing; urgency=low
+
+  * new version requires schulkonsole >= 0.23.0-1
+
+ -- Frank Schütte <fschuett@gymhim.de>  Fri, 26 Feb 2016 19:12:14 +0100
+
 linuxmuster-backup (6.3.0-4) babo-testing; urgency=low
 
   * New menu (requires schulkonsole 0.15.0-1.
