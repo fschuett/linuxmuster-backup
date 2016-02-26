@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: schulkonsole-settings-backup 1.0\n"
 "Report-Msgid-Bugs-To: fschuett@gymnasium-himmelsthuer.de\n"
-"POT-Creation-Date: 2015-08-20 10:53+0200\n"
+"POT-Creation-Date: 2016-02-26 19:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Frank Schütte <fschuett@gymnasium-himmelsthuer.de>\n"
 "Language-Team: german <fschuett@gymnasium-himmelsthuer.de>\n"
@@ -123,22 +123,22 @@ msgstr ""
 msgid "Erlaubte Werte für Kompressionsgrad sind 0 bis 9"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:113
+#: ../cgi-bin/settings_backup:114
 msgid "Erwarte Zahl zwischen 1 und 9 bei Anzahl der vorgehaltenen Vollbackups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:121
+#: ../cgi-bin/settings_backup:122
 msgid ""
 "Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen differentiellen "
 "Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:129
+#: ../cgi-bin/settings_backup:130
 msgid ""
 "Erwarte Zahl größer gleich 1 bei Anzahl der vorgehaltenen inkrementellen "
 "Backups"
 msgstr ""
 
-#: ../cgi-bin/settings_backup:159
+#: ../cgi-bin/settings_backup:160
 msgid "Änderungen übernommen"
 msgstr ""
