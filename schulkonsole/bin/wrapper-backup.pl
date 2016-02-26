@@ -32,7 +32,8 @@ use open ':std';
 use Schulkonsole::Config;
 use Schulkonsole::DB;
 use Schulkonsole::Encode;
-use Schulkonsole::Error::Files;
+use Schulkonsole::Error::Error;
+use Schulkonsole::Error::FilesError;
 
 
 
@@ -42,19 +43,16 @@ my $password = <>;
 chomp $password;
 
 my $userdata = Schulkonsole::DB::verify_password_by_id($id, $password);
-exit (  Schulkonsole::Error::Files::WRAPPER_UNAUTHENTICATED_ID
-      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
+exit (  Schulkonsole::Error::Error::WRAPPER_UNAUTHENTICATED_ID)
 	unless $userdata;
 
 my $app_id = <>;
 ($app_id) = $app_id =~ /^(\d+)$/;
-exit (  Schulkonsole::Error::Files::WRAPPER_APP_ID_DOES_NOT_EXIST
-      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
+exit (  Schulkonsole::Error::Error::WRAPPER_APP_ID_DOES_NOT_EXIST)
 	unless defined $app_id;
 
 my $app_name = 'write_backup_conf';
-exit (  Schulkonsole::Error::Files::WRAPPER_APP_ID_DOES_NOT_EXIST
-      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
+exit (  Schulkonsole::Error::Error::WRAPPER_APP_ID_DOES_NOT_EXIST)
 	unless defined $app_name;
 
 
@@ -70,8 +68,7 @@ foreach my $group (('ALL', keys %$groups)) {
 		last;
 	}
 }
-exit (  Schulkonsole::Error::Files::WRAPPER_UNAUTHORIZED_ID
-      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
+exit (  Schulkonsole::Error::Error::WRAPPER_UNAUTHORIZED_ID)
 	unless $is_permission_found;
 
 
@@ -97,8 +94,7 @@ numeric constant: C<Schulkonsole::Config::WRITEFILESAPP>
 $app_id == 91001 and do {
 	my $file = <>;
 	($file) = $file =~ /^(\d+)$/;
-	exit (  Schulkonsole::Error::Files::WRAPPER_INVALID_FILENUMBER
-	      - Schulkonsole::Error::Files::WRAPPER_ERROR_BASE)
+	exit (  Schulkonsole::Error::FilesError::WRAPPER_INVALID_FILENUMBER)
 		unless defined $file and $file == 1;
 
 	my $perm;
@@ -112,8 +108,7 @@ $app_id == 91001 and do {
 	umask(022);
 
 	open FILE, '>', $filename
-		or exit(  Schulkonsole::Error::Files::WRAPPER_ERROR_BASE
-		        - Schulkonsole::Error::Files::WRAPPER_CANNOT_OPEN_FILE);
+		or exit(Schulkonsole::Error::Error::WRAPPER_CANNOT_OPEN_FILE);
 	flock FILE, 2;
 	seek FILE, 0, 0;
 
