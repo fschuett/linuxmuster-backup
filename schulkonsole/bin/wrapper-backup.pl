@@ -29,51 +29,28 @@ use strict;
 use lib '/usr/share/schulkonsole';
 use open ':utf8';
 use open ':std';
-use Schulkonsole::Config;
-use Schulkonsole::DB;
 use Schulkonsole::Encode;
+use Schulkonsole::Wrapper;
 use Schulkonsole::Error::Error;
 use Schulkonsole::Error::FilesError;
 
+my $userdata = Schulkonsole::Wrapper::wrapper_authenticate();
 
+my $_id_apps = {
+    91001 => 'write_backup_conf',
+};
 
-my $id = <>;
-$id = int($id);
-my $password = <>;
-chomp $password;
-
-my $userdata = Schulkonsole::DB::verify_password_by_id($id, $password);
-exit (  Schulkonsole::Error::Error::WRAPPER_UNAUTHENTICATED_ID)
-	unless $userdata;
-
-my $app_id = <>;
-($app_id) = $app_id =~ /^(\d+)$/;
-exit (  Schulkonsole::Error::Error::WRAPPER_APP_ID_DOES_NOT_EXIST)
-	unless defined $app_id;
-
-my $app_name = 'write_backup_conf';
-exit (  Schulkonsole::Error::Error::WRAPPER_APP_ID_DOES_NOT_EXIST)
-	unless defined $app_name;
-
-
-
-my $permissions = Schulkonsole::Config::permissions_apps();
-my $groups = Schulkonsole::DB::user_groups(
-	$$userdata{uidnumber}, $$userdata{gidnumber}, $$userdata{gid});
-
-my $is_permission_found = 0;
-foreach my $group (('ALL', keys %$groups)) {
-	if ($$permissions{$group}{$app_name}) {
-		$is_permission_found = 1;
-		last;
-	}
-}
-exit (  Schulkonsole::Error::Error::WRAPPER_UNAUTHORIZED_ID)
-	unless $is_permission_found;
-
+my $app_id = Schulkonsole::Wrapper::wrapper_authorize($userdata, $_id_apps);
 
 my $opts;
 SWITCH: {
+    $app_id == 91001 and do {
+	write_files();
+	last SWITCH;
+    };
+};
+
+exit -2;	# program error
 
 =head3 write_files
 
@@ -91,7 +68,7 @@ numeric constant: C<Schulkonsole::Config::WRITEFILESAPP>
 
 =cut
 
-$app_id == 91001 and do {
+sub write_files {
 	my $file = <>;
 	($file) = $file =~ /^(\d+)$/;
 	exit (  Schulkonsole::Error::FilesError::WRAPPER_INVALID_FILENUMBER)
@@ -123,9 +100,5 @@ $app_id == 91001 and do {
 	close FILE;
 
 	exit 0;
-};
-
 }
-
-exit -2;	# program error
 

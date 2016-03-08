@@ -7,7 +7,7 @@ schulkonsole/permissions.d/*	usr/lib/schulkonsole/permissions.d/
 schulkonsole/cgi-bin/*		usr/lib/schulkonsole/cgi-bin/
 schulkonsole/bin/wrapper-backup		usr/lib/schulkonsole/bin/
 schulkonsole/bin/wrapper-backup.pl		usr/lib/schulkonsole/bin/
-schulkonsole/shtml/*		usr/share/schulkonsole/shtml/
+schulkonsole/tt/*		usr/share/schulkonsole/tt/
 schulkonsole/locale/de/*.mo	usr/share/locale/de/LC_MESSAGES/
 schulkonsole/locale/en/*.mo	usr/share/locale/en/LC_MESSAGES/
 schulkonsole/lintian/*		usr/share/lintian/overrides/

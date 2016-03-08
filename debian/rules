@@ -42,7 +42,7 @@ build-arch-stamp:
 	# make messages
 	( cd schulkonsole/locale && \
 	xgettext.pl --plugin tt2 --gnu-gettext --use-gettext-style \
-	--output=linuxmuster-backup.pot ../shtml/settings_backup.tt; \
+	--output=linuxmuster-backup.pot ../tt/settings_backup.tt; \
 	sed 's/CHARSET/UTF-8/' -i linuxmuster-backup.pot; \
 	xgettext --join-existing \
 	--from-code=UTF-8 --language=Perl --output=linuxmuster-backup.pot \
