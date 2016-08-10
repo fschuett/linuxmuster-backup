@@ -1,7 +1,7 @@
 etc/*				etc/
 sbin/*				usr/sbin/
 var/*				var/lib/linuxmuster/
-var/config-static/etc/cron.d/*	etc/cron.d/
+var/config-static/01_backup/etc/cron.d/*	etc/cron.d/
 schulkonsole/menus.d/*		usr/lib/schulkonsole/menus.d/
 schulkonsole/permissions.d/*	usr/lib/schulkonsole/permissions.d/
 schulkonsole/cgi-bin/*		usr/lib/schulkonsole/cgi-bin/

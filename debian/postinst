@@ -39,11 +39,11 @@ case "$1" in
 
   # fix mindi conf
   MINDI=/etc/mindi/mindi.conf
-  if [ -e $STATICTPLDIR$MINDI ]; then
+  if [ -e $STATICTPLDIR/01_backup$MINDI ]; then
    if [ -e $MINDI ]; then
     mv -f $MINDI $MINDI.dpkg-bak
    fi
-   cp $STATICTPLDIR$MINDI $MINDI
+   cp $STATICTPLDIR/01_backup$MINDI $MINDI
   fi
   # fix backup.conf
   BACKUP=/etc/linuxmuster/backup.conf
