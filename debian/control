@@ -8,6 +8,6 @@ Standards-Version: 3.6.0
 Package: linuxmuster-backup
 Architecture: all
 Pre-Depends: locales
-Depends: ${misc:Depends}, linuxmuster-base (= 6.2.99), linuxmuster-schulkonsole (>=0.31.0), bash, mondo, mindi, mindi-busybox, php-gettext
+Depends: ${misc:Depends}, linuxmuster-base (>= 6.2.99), linuxmuster-schulkonsole (>=0.31.0), bash, mondo, mindi, mindi-busybox, php-gettext
 Description: linuxmuster.net backup scripts
  This package provides backup scripts for linuxmuster.net 6.1
