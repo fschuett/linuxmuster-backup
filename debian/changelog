@@ -1,3 +1,9 @@
+linuxmuster-backup (6.5.0-1) babo62; urgency=low
+
+  * update to require linuxmuster-base >= 6.2.99-1
+
+ -- Frank Schütte <fschuett@gymhim.de>  Wed, 28 Sep 2016 10:48:02 +0200
+
 linuxmuster-backup (6.4.0-horde5.1) babo-testing; urgency=low
 
   * update to require linuxmuster-base = 6.2.0-horde5.1
